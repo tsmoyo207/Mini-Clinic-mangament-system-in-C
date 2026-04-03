@@ -1,0 +1,26 @@
+#ifndef CONSTANTS_H_INCLUDED
+#define CONSTANTS_H_INCLUDED
+#define GRN "\x1B[32m"
+#define GRN_BR_BOLD "\x1B[1;92m"
+#define GRN_BR_UND "\x1B[1;4;92m"
+#define RESET "\x1B[0m"
+#define BLU "\x1B[1;4;94m"
+#define BOLD "\x1B[1m"
+#define YEL "\x1B[33m"
+#define YEL_BOLD "\x1B[1;33m"
+#define YEL_B_U "\x1B[1;4;93m"
+#define RED "\x1B[31m"
+#define RED_BR "\x1B[91m"
+#define CYAN "\x1B[36m"
+#define MGT "\x1B[35m"
+#define MGT_B_U "\x1B[1;4;95m"
+#define WHITE "\x1B[1;37m"
+#define BRIGHT_WHITE "\x1B[97m"
+#define B_WHITE_U "\x1B[1;4;97m"
+#define BB_WHITE "\x1B[1;97m"
+#define BRIGHT_YELLOW "\x1B[1;4;93m"
+#define BR_YEL "\x1B[93m"
+#define YELUND "\x1B[4;33m"
+#define GREY "\x1B[90m"
+#define maxbeds 20
+#endif // CONSTANTS_H_INCLUDED
