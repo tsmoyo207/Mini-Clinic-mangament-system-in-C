@@ -3,6 +3,7 @@
 #include "patient.h"
 #include "constants.h"
 #include <string.h>
+#include "utility.h"
 
 
 void viewqueue(Node *temp){
@@ -105,6 +106,9 @@ Node* addpatient(Node *start, patient pat){
     newNode = malloc(sizeof(Node));
     newNode->data = pat;
     newNode->next= NULL;
+    date dob;
+    dob = pat.dob;
+    int oldness = age(dob);
     if(start == NULL){
         newNode->data.ticketnum = 1000;
         start = newNode;
@@ -112,10 +116,17 @@ Node* addpatient(Node *start, patient pat){
     }else{
         current = start;
         size = current;
-        while(current->next != NULL && current->data.priority >= pat.priority){
+
+        if (oldness > 60 || oldness < 10){
+            while(current->next != NULL && current->data.priority > pat.priority){
+            prev = current;
+            current = current->next;
+        }else{
+            while(current->next != NULL && current->data.priority >= pat.priority){
             prev = current;
             current = current->next;
         }
+
         int x = size->data.ticketnum;
         while(size != NULL){
             if(x < size->data.ticketnum){

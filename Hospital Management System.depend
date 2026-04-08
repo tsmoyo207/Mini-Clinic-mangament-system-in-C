@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1775226410 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\main.c
+1775255802 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\main.c
 	<stdio.h>
 	<stdlib.h>
 	"patient.h"

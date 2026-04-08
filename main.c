@@ -8,16 +8,12 @@
 #include "utility.h"
 #include "records.h"
 
-//General Statistics
 //What if we ask the outcome of the preveous patient instead of the current cause it seems like you'd have to wait till he's finished
 //you need an age calulator function
-//you need to prioritise children and old ladies a little bit more than regaulr patietns
-//you neeed a veiw record function for viewhistory
-//we want to add money by the patient and also add that to statistics
+//you need to prioritise children and old ladies a little bit more than regaulr patients
 //you need to separate case 2, 3 and 5 from your main menu into separate functions. Call them handleaddpatient, handle.....
 //you need to check the national ID when user is entering details to see if user has ever been here before then autofill the rest
 //you need to allow editing of the queue, that is the a patient being removed from the queue or moving up or down the queue or editing the record on the queeu
-//you can record consulation duration as well
 
 
 int main(){
