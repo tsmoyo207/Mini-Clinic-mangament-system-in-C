@@ -2,33 +2,39 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-<<<<<<< HEAD
-	<File name="records.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="patients.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="287" topLine="0" />
-=======
-	<File name="patient.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="582" topLine="13" />
+			<Cursor1 position="128" topLine="9" />
 		</Cursor>
 	</File>
-	<File name="utility.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+	<File name="constants.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1946" topLine="0" />
->>>>>>> b5a05c78259f2c742785b814c672b2c0ebbec143
+			<Cursor1 position="28" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="observations.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-<<<<<<< HEAD
-			<Cursor1 position="5093" topLine="110" />
-=======
 			<Cursor1 position="3241" topLine="76" />
 		</Cursor>
 	</File>
-	<File name="patients.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4110" topLine="99" />
+			<Cursor1 position="622" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="utility.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="95" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="records.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="956" topLine="3" />
+		</Cursor>
+	</File>
+	<File name="utility.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3165" topLine="76" />
 		</Cursor>
 	</File>
 	<File name="observations.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="6" zoom_2="0">
@@ -36,67 +42,14 @@
 			<Cursor1 position="564" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="utility.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="patient.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="4" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="232" topLine="0" />
->>>>>>> b5a05c78259f2c742785b814c672b2c0ebbec143
+			<Cursor1 position="145" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="records.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-<<<<<<< HEAD
-			<Cursor1 position="582" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="utility.h" open="1" top="1" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="553" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1076" topLine="120" />
-=======
 			<Cursor1 position="101" topLine="0" />
->>>>>>> b5a05c78259f2c742785b814c672b2c0ebbec143
-		</Cursor>
-	</File>
-	<File name="constants.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-<<<<<<< HEAD
-			<Cursor1 position="60" topLine="0" />
-=======
-			<Cursor1 position="28" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="records.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="13663" topLine="141" />
->>>>>>> b5a05c78259f2c742785b814c672b2c0ebbec143
-		</Cursor>
-	</File>
-	<File name="main.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-<<<<<<< HEAD
-			<Cursor1 position="66" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="records.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="2" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2828" topLine="78" />
-		</Cursor>
-	</File>
-	<File name="utility.c" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2894" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="patients.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="5935" topLine="96" />
-=======
-			<Cursor1 position="188" topLine="79" />
->>>>>>> b5a05c78259f2c742785b814c672b2c0ebbec143
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

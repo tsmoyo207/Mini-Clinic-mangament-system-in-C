@@ -121,12 +121,13 @@ Node* addpatient(Node *start, patient pat){
             while(current->next != NULL && current->data.priority > pat.priority){
             prev = current;
             current = current->next;
+            }
         }else{
             while(current->next != NULL && current->data.priority >= pat.priority){
             prev = current;
             current = current->next;
         }
-
+        }
         int x = size->data.ticketnum;
         while(size != NULL){
             if(x < size->data.ticketnum){
@@ -185,7 +186,7 @@ int queuelength(Node *start){
     return count;
 }
 
-patientNode* registerpatient(patientNode *start){
+patient registerpatient(){
     patient pat;
     int valid = 0;
     do{
@@ -210,7 +211,7 @@ patientNode* registerpatient(patientNode *start){
             scanf(" %[^\n]", pat.issue);
             printf("Enter Priority {1,2,3}: ");
             scanf(" %d", &pat.priority);
-            valid = verify(pat, start);
+            valid = verify(pat);
 
             switch(valid){
                 case 1:
@@ -237,8 +238,6 @@ patientNode* registerpatient(patientNode *start){
                 }
             }while(valid != 0);
             pat.ticketnum = 0;
-            start = addpatient(start, pat);
-            pause();
-            return start;
+            return pat;
 
 }

@@ -17,15 +17,9 @@ void pause() {
     system("cls");
 }
 
-int verify(patient pat, Node* start){
+int verify(patient pat){
     int i,j;
 
-    while(start != NULL){
-        if(start->data.id == pat.id){
-            return 5;
-        }
-        start = start->next;
-    }
     if (pat.dob.day < 0 || pat.dob.day > 31){
         return 1;
     }
@@ -90,7 +84,8 @@ void freequeue(Node *start){
     }
 }
 
-int age(Date birth, time_t timestamp) {
+int age(date birth) {
+    time_t timestamp = time(NULL);
     struct tm *t = localtime(&timestamp);
     int age = (t->tm_year + 1900) - birth.year;
     if ((t->tm_mon + 1 < birth.month) ||

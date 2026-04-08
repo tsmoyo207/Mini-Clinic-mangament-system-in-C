@@ -20,8 +20,7 @@ int main(){
     patient pat;
     Node *start = loadqueue();
     pat.ticketnum = 0;
-    int i,q;
-    int opt1, opt2, opt3, opt4;
+    int q, opt1;
     observ_arr arr = loadobservations();
     bool loop = true;
 
@@ -38,7 +37,9 @@ int main(){
             pause();
             break;
         case 2:
-           start = registerpatient(start);
+           patient pat  = registerpatient();
+           start = addpatient(start, pat);
+
             break;
         case 3:
             if (start == NULL){

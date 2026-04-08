@@ -6,10 +6,10 @@
 #include "observations.h"
 
 void pause();
-int verify(patient pat, Node *start);
+int verify(patient pat);
 void printmenu(observ_arr arr, Node *start);
 void freequeue(Node *start);
-int age(Date birth, time_t timestamp);
+int age(date birth);
 
 
 
