@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1775664805 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\main.c
+1775667912 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\main.c
 	<stdio.h>
 	<stdlib.h>
 	"patient.h"
@@ -10,10 +10,10 @@
 	"utility.h"
 	"records.h"
 
-1775664805 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\patient.h
+1775668189 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\patient.h
 	<time.h>
 
-1775665118 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\patients.c
+1775669646 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\patients.c
 	<stdio.h>
 	<stdlib.h>
 	"patient.h"
@@ -23,17 +23,19 @@
 
 1774028887 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\constants.h
 
-1774000275 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\observations.h
+1775667713 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\observations.h
 	"patient.h"
 	<time.h>
 	"constants.h"
 
-1774000275 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\observations.c
+1775667713 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\observations.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"constants.h"
 	"observations.h"
+	"utility.h"
+	"records.h"
 
 1775665118 c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\utility.h
 	<stdbool.h>
@@ -41,7 +43,7 @@
 	"patient.h"
 	"observations.h"
 
-1775226726 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\utility.c
+1775665128 source:c:\users\tsmoy\documents\informatique ing 2\asd\hospital management system\utility.c
 	"utility.h"
 	<stdio.h>
 	<stdlib.h>

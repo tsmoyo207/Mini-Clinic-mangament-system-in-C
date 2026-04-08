@@ -2,6 +2,7 @@
 #define PATIENT_H_INCLUDED
 #include <time.h>
 
+
 typedef struct{
     int day;
     int month;
@@ -38,7 +39,7 @@ Node* addpatient(Node *start, patient pat);
 Node* loadqueue();
 void savequeue(Node *start);
 int queuelength(Node *start);
-patient registerpatient();
+patient registerpatient(Node *start);
 
 
 #endif // PATIENT_H_INCLUDED
