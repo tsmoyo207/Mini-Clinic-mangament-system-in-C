@@ -38,57 +38,7 @@ int main(){
             pause();
             break;
         case 2:
-            int valid = 0;
-            do{
-                printf("Enter Firstname and Surname: ");
-                scanf("%s %s", pat.firstname, pat.lastname);
-
-                printf("Enter ID Number: ");
-                while((scanf("%d", &pat.id))!= 1){
-                    printf(RED"Invalid input!" RESET "Please Enter a number: ");
-                    while(getchar() != '\n');
-                }
-
-                printf("Enter Date of Birth (DD MM YYYY): ");
-                while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
-                      printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
-                      while(getchar() != '\n');
-                      }
-
-                printf("Enter Gender(M/F): ");
-                scanf(" %c", &pat.gender);
-                printf("Enter Issue/ Complaint: ");
-                scanf(" %[^\n]", pat.issue);
-                printf("Enter Priority {1,2,3}: ");
-                scanf(" %d", &pat.priority);
-                valid = verify(pat, start);
-                switch(valid){
-                case 1:
-                    printf(RED"Invalid Date. Try Again\n"RESET);
-                    break;
-                case 2:
-                    printf(RED"Invalid ID Number. Try Again\n"RESET);
-                    break;
-                case 3:
-                    printf(RED"Invalid Firstname. Try Again\n"RESET);
-                    break;
-                case 4:
-                    printf(RED"Invalid Lastname Age. Try Again\n"RESET);
-                    break;
-                case 5:
-                    printf(RED"Patient is already in queue\n"RESET);
-                    break;
-                case 7:
-                    printf(RED"Please Enter a number from 1 to 3 for priority\n"RESET);
-                    break;
-                case 6:
-                    printf(RED"Please Enter  the letter M/m/F/f for gender"RESET);
-                    break;
-                }
-                }while(valid != 0);
-            pat.ticketnum = 0;
-            start = addpatient(start, pat);
-            pause();
+           start = registerpatient(start);
             break;
         case 3:
             if (start == NULL){

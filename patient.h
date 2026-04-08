@@ -38,6 +38,7 @@ Node* addpatient(Node *start, patient pat);
 Node* loadqueue();
 void savequeue(Node *start);
 int queuelength(Node *start);
+patientNode* registerpatient(patientNode *start);
 
 
 #endif // PATIENT_H_INCLUDED
