@@ -20,8 +20,6 @@
 //you can record consulation duration as well
 
 
-
-
 int main(){
     patient pat;
     Node *start = loadqueue();

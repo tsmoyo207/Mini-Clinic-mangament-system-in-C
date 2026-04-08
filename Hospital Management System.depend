@@ -61,3 +61,67 @@
 	"constants.h"
 	"observations.h"
 
+1775655686 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\main.c
+	<stdio.h>
+	<stdlib.h>
+	"patient.h"
+	<string.h>
+	<stdbool.h>
+	"constants.h"
+	"observations.h"
+	"utility.h"
+	"records.h"
+
+1775241014 c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\patient.h
+	<time.h>
+
+1775241014 c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\constants.h
+
+1775241014 c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\observations.h
+	"patient.h"
+	<time.h>
+	"constants.h"
+
+1775655700 c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\utility.h
+	<stdbool.h>
+	<time.h>
+	"patient.h"
+	"observations.h"
+
+1775241014 c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\records.h
+	"patient.h"
+	"observations.h"
+
+1775241014 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\observations.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"constants.h"
+	"observations.h"
+
+1775241014 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\patients.c
+	<stdio.h>
+	<stdlib.h>
+	"patient.h"
+	"constants.h"
+	<string.h>
+
+1775241014 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\utility.c
+	"utility.h"
+	<stdio.h>
+	<stdlib.h>
+	<stdbool.h>
+	"constants.h"
+	<string.h>
+	<ctype.h>
+
+1775312946 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\records.c
+	"records.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<stdbool.h>
+	"constants.h"
+	"observations.h"
+
