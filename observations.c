@@ -3,6 +3,8 @@
 #include <string.h>
 #include "constants.h"
 #include "observations.h"
+#include "utility.h"
+#include "records.h"
 
 
 observ_arr loadobservations(){
@@ -139,4 +141,32 @@ int bedsoccupied(observ_arr arr){
         }
     }
     return count;
+}
+observ_arr dischargepatient(observ_arr arr){
+
+     int q;
+     printf("Enter Bed Number: ");
+     scanf("%d", &q);
+     while(q<1 || q> 20 ){
+            printf(RED"Invalid Bed Number, Please try again: "RESET);
+            scanf("%d", &q);
+    }
+    if(arr.beds[q-1].occupied == 0){
+        printf(RED"This bed is already empty\n"RESET);
+    }else{
+        arr.beds[q-1].occupied = 0;
+        printf(GRN"%s %s has been discharged successfully\n"RESET,
+                arr.beds[q-1].info.firstname,
+                arr.beds[q-1].info.lastname
+                );
+                patoutcome patty;
+                patty.data = arr.beds[q-1].info;
+                patty.admissiondate = arr.beds[q-1].date;
+                patty.outcome = 2;
+                strcpy(patty.diagnosis , arr.beds[q-1].diagnosis);
+                strcpy(patty.treatment , "Medical Observation");
+                savehistory(patty);
+            }
+            pause();
+            return arr;
 }

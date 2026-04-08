@@ -91,29 +91,7 @@ int main(){
                 pause();
                 break;
         case 5:
-                printf("Enter Bed Number: ");
-                scanf("%d", &q);
-                while(q<0 || q> 20 ){
-                    printf(RED"Invalid Bed Number, Please try again: "RESET);
-                    scanf("%d", &q);
-                }
-                if(arr.beds[q-1].occupied == 0){
-                    printf(RED"This bed is already empty\n"RESET);
-                }else{
-                    arr.beds[q-1].occupied = 0;
-                    printf(GRN"%s %s has been discharged successfully\n"RESET,
-                            arr.beds[q-1].info.firstname,
-                            arr.beds[q-1].info.lastname
-                            );
-                    patoutcome patty;
-                    patty.data = arr.beds[q-1].info;
-                    patty.admissiondate = arr.beds[q-1].date;
-                    patty.outcome = 2;
-                    strcpy(patty.diagnosis , arr.beds[q-1].diagnosis);
-                    strcpy(patty.treatment , "Medical Observation");
-                    savehistory(patty);
-                        }
-                pause();
+                arr = dischargepatient(arr);
                 break;
         case 6:
                 int num;
