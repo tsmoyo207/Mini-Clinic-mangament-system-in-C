@@ -10,4 +10,17 @@ int verify(patient pat, Node *start);
 void printmenu(observ_arr arr, Node *start);
 void freequeue(Node *start);
 
+int age(Date birth, time_t timestamp) {
+    struct tm *t = localtime(&timestamp);
+
+    int age = (t->tm_year + 1900) - birth.year;
+
+    if ((t->tm_mon + 1 < birth.month) ||
+        ((t->tm_mon + 1 == birth.month) && (t->tm_mday < birth.day))) {
+        age--;
+    }
+
+    return age;
+}
+
 #endif // UTILITY_H_INCLUDED
