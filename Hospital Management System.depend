@@ -95,12 +95,14 @@
 	"patient.h"
 	"observations.h"
 
-1775241014 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\observations.c
+1775667519 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\observations.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"constants.h"
 	"observations.h"
+	"utility.h"
+	"records.h"
 
 1775665380 source:c:\users\hp\documents\hospital management sytem\mini-clinic-mangament-system-in-c\patients.c
 	<stdio.h>
