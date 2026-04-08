@@ -186,27 +186,98 @@ int queuelength(Node *start){
     return count;
 }
 
-patient registerpatient(){
-    patient pat;
+patient registerpatient(Node *start){
+    patient pat, rec, rey;
+    bool inqueue = false, inrecords = false;
     int valid = 0;
-    do{
-        printf("Enter Firstname and Surname: ");
-        scanf("%s %s", pat.firstname, pat.lastname);
 
-        printf("Enter ID Number: ");
-        while((scanf("%d", &pat.id))!= 1){
-            printf(RED"Invalid input!" RESET "Please Enter a number: ");
-            while(getchar() != '\n');
+
+        do{
+            inqueue = false;
+            printf("Enter ID Number: ");
+            while((scanf("%d", &pat.id))!= 1){
+                printf(RED"Invalid input!" RESET "Please Enter a number: ");
+                while(getchar() != '\n');
+                }
+
+            do{
+                if(pat.id == start->data.id){
+                    inqueue = true;
+                }else{
+                    start = start->next;
+                }
+            }while(start != NULL && inqueue == false);
+
+            if(inqueue){
+                printf(RED"Error " RESET "Patient Already in Queue: \n");
             }
 
-            printf("Enter Date of Birth (DD MM YYYY): ");
-            while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
-                    printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
-                    while(getchar() != '\n');
-                    }
+            }while(inqueue == true);
 
-            printf("Enter Gender(M/F): ");
-            scanf(" %c", &pat.gender);
+
+    FILE* f = fopen("patienthistory.csv", "r");
+    int id, day, month, year;
+    char gender;
+    bool empty = true, found = false;
+    char firstname[100], lastname[100], diagnosis[100], treatment[100];
+    int outcome;
+    time_t releasedate, admissiondate;
+
+        if (!f) {
+            printf("");
+        }else{
+            while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+                      rec.firstname,
+                      rec.lastname,
+                      &rec.id,
+                      &rec.dob.day,
+                      &rec.dob.month,
+                      &rec.dob.year,
+                      &rec.gender,
+                      diagnosis,
+                      &outcome,
+                      treatment,
+                      &releasedate,
+                      &admissiondate)) == 12 && inrecords == false){
+
+                rey = rec;
+                if(pat.id == rec.id){
+                    inrecords = true;
+                }
+                      }
+        fclose(f);
+        char option;
+        if (inrecords){
+            printf("We Found a records with the same ID under the name %s %s.\n", rey.firstname, rey.lastname);
+            printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?  ");
+            scanf(" %c", &option);
+            if (option == 'Y' || option == 'y'){
+                strcpy(pat.firstname, rey.firstname);
+                strcpy(pat.lastname, rey.lastname);
+                pat.dob = rey.dob;
+                pat.gender = rey.gender;
+            }else{
+                printf("Enter Firstname and Surname: ");
+                scanf("%s %s", pat.firstname, pat.lastname);
+                printf("Enter Date of Birth (DD MM YYYY): ");
+                while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
+                        printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
+                        while(getchar() != '\n');
+                        }
+                printf("Enter Gender(M/F): ");
+                scanf(" %c", &pat.gender);
+            }
+        }else{
+            printf("Enter Firstname and Surname: ");
+                scanf("%s %s", pat.firstname, pat.lastname);
+                printf("Enter Date of Birth (DD MM YYYY): ");
+                while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
+                        printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
+                        while(getchar() != '\n');
+                        }
+                printf("Enter Gender(M/F): ");
+                scanf(" %c", &pat.gender);
+        }
             printf("Enter Issue/ Complaint: ");
             scanf(" %[^\n]", pat.issue);
             printf("Enter Priority {1,2,3}: ");
