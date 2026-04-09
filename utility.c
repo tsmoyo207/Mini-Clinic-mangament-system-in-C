@@ -64,11 +64,12 @@ void printmenu(observ_arr arr, Node* start){
     printf("\n");
     printf("     "CYAN" [1]"RESET" View Patient Queue.\n");
     printf("     "CYAN" [2]"RESET" Add Patient to Queue.\n");
-    printf("     "CYAN" [3]"RESET" Call the Next Patient to see the Doctor.\n");
-    printf("     "CYAN" [4]"RESET" View Observation Ward.\n");
-    printf("     "CYAN" [5]"RESET" Discharge Patient from Observation Ward.\n");
-    printf("     "CYAN" [6]"RESET" Search History or View All patient History Records.\n");
-    printf("     "CYAN" [7]"RESET" View Hospital Statistics.\n");
+    printf("     "CYAN" [3]"RESET" Remove Patient from Queue.\n");
+    printf("     "CYAN" [4]"RESET" Call the Next Patient to see the Doctor.\n");
+    printf("     "CYAN" [5]"RESET" View Observation Ward.\n");
+    printf("     "CYAN" [6]"RESET" Discharge Patient from Observation Ward.\n");
+    printf("     "CYAN" [7]"RESET" Search History or View All patient History Records.\n");
+    printf("     "CYAN" [8]"RESET" View Hospital Statistics.\n");
     printf("     "CYAN" [0]"RESET" Save and Exit.\n");
 
 
