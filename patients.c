@@ -234,7 +234,7 @@ patient registerpatient(Node *start){
                       &rec.dob.month,
                       &rec.dob.year,
                       &rec.gender,
-                      diagnosis,
+                      rec.issue,
                       &outcome,
                       treatment,
                       &releasedate,
@@ -246,17 +246,41 @@ patient registerpatient(Node *start){
                 }
                       }
         fclose(f);
-        char option;
+        char option, option2;
         if (inrecords){
             printf("We Found a records with the same ID under the name %s %s.\n", rey.firstname, rey.lastname);
-            printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?  ");
-            scanf(" %c", &option);
-            if (option == 'Y' || option == 'y'){
-                strcpy(pat.firstname, rey.firstname);
-                strcpy(pat.lastname, rey.lastname);
-                pat.dob = rey.dob;
-                pat.gender = rey.gender;
+            printf("Is the patient back for a review? (Y/n)\n");
+            scanf(" %c", &option2);
+            if (option2 == 'Y' || option2 == 'y'){
+                    pat = rey;
+                    pat.priority = 1;
             }else{
+                printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?  ");
+                scanf(" %c", &option);
+                if (option == 'Y' || option == 'y'){
+                    strcpy(pat.firstname, rey.firstname);
+                    strcpy(pat.lastname, rey.lastname);
+                    pat.dob = rey.dob;
+                    pat.gender = rey.gender;
+
+                }else{
+                    printf("Enter Firstname and Surname: ");
+                    scanf("%s %s", pat.firstname, pat.lastname);
+                    printf("Enter Date of Birth (DD MM YYYY): ");
+                    while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
+                            printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
+                            while(getchar() != '\n');
+                            }
+                    printf("Enter Gender(M/F): ");
+                    scanf(" %c", &pat.gender);
+                }
+                printf("Enter Issue/ Complaint: ");
+                scanf(" %[^\n]", pat.issue);
+                printf("Enter Priority {1,2,3}: ");
+                scanf(" %d", &pat.priority);
+                valid = verify(pat);
+            }
+        }else{
                 printf("Enter Firstname and Surname: ");
                 scanf("%s %s", pat.firstname, pat.lastname);
                 printf("Enter Date of Birth (DD MM YYYY): ");
@@ -266,23 +290,13 @@ patient registerpatient(Node *start){
                         }
                 printf("Enter Gender(M/F): ");
                 scanf(" %c", &pat.gender);
-            }
-        }else{
-            printf("Enter Firstname and Surname: ");
-                scanf("%s %s", pat.firstname, pat.lastname);
-                printf("Enter Date of Birth (DD MM YYYY): ");
-                while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
-                        printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
-                        while(getchar() != '\n');
-                        }
-                printf("Enter Gender(M/F): ");
-                scanf(" %c", &pat.gender);
+                printf("Enter Issue/ Complaint: ");
+                scanf(" %[^\n]", pat.issue);
+                printf("Enter Priority {1,2,3}: ");
+                scanf(" %d", &pat.priority);
+                valid = verify(pat);
         }
-            printf("Enter Issue/ Complaint: ");
-            scanf(" %[^\n]", pat.issue);
-            printf("Enter Priority {1,2,3}: ");
-            scanf(" %d", &pat.priority);
-            valid = verify(pat);
+
 
             switch(valid){
                 case 1:
