@@ -268,7 +268,7 @@ patient registerpatient(Node *start){
                 scanf(" %c", &pat.gender);
             }
         }else{
-            printf("Enter Firstname and Surname: ");
+            printf("Enter Firstname and Surname:No ");
                 scanf("%s %s", pat.firstname, pat.lastname);
                 printf("Enter Date of Birth (DD MM YYYY): ");
                 while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
@@ -311,4 +311,44 @@ patient registerpatient(Node *start){
             pat.ticketnum = 0;
             return pat;
 
+}
+
+Node* removepatient(Node *start, int ticketnumber){
+    patient pat;
+    if(start == NULL){
+        printf("the queue is empty\n");
+        return NULL;
+    }
+
+    Node *current = start;
+    Node *prev = NULL;
+
+    while(current != NULL && current->data.ticketnum != ticketnumber){
+        prev = current;
+        current = current->next;
+    }
+
+    if(current == NULL){
+        printf("ticketnum #%d not found", ticketnumber);
+        return start;
+    }
+    pat = current->data;
+
+    if(prev == NULL){
+        start = current->next;
+    }else{
+        prev->next = current->next;
+    }
+
+    free(current);
+
+    printf(GRN"ticketnumber: %d | %s %s"RESET,
+          pat.ticketnum,
+          pat.firstname,
+          pat.lastname
+          );
+          printf("\n");
+          printf("\n");
+
+          return start;
 }

@@ -20,7 +20,7 @@ int main(){
     patient pat;
     Node *start = loadqueue();
     pat.ticketnum = 0;
-    int q, opt1;
+    int q, opt1,ticketnumber;
     observ_arr arr = loadobservations();
     bool loop = true;
 
@@ -42,6 +42,11 @@ int main(){
             pause();
             break;
         case 3:
+            printf("Enter ticketnumber to remove patient from Queue: ");
+            scanf("%d", &ticketnumber);
+            start = removepatient(start,ticketnumber);
+            break;
+        case 4:
             if (start == NULL){
                 printf("No patients waiting");
             }else{
@@ -86,21 +91,21 @@ int main(){
                 }
                 pause();
                 break;
-        case 4:
+        case 5:
                 viewobservations(arr);
                 pause();
                 break;
-        case 5:
+        case 6:
                 arr = dischargepatient(arr);
                 break;
-        case 6:
+        case 7:
                 int num;
                 printf("Enter Specific ID to search for record or 0 to show all records: ");
                 scanf("%d", &num);
                 viewhistory(num);
                 pause();
                 break;
-        case 7:
+        case 8:
                 statistics(start, arr);
                 pause();
                 break;

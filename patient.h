@@ -37,9 +37,11 @@ typedef struct{
 void viewqueue(Node *temp);
 Node* addpatient(Node *start, patient pat);
 Node* loadqueue();
+Node* removepatient(Node *start, int ticketnumber);
 void savequeue(Node *start);
 int queuelength(Node *start);
 patient registerpatient(Node *start);
+
 
 
 #endif // PATIENT_H_INCLUDED
