@@ -39,6 +39,7 @@ Node* addpatient(Node *start, patient pat);
 Node* loadqueue();
 Node* removepatient(Node *start, int ticketnumber);
 void savequeue(Node *start);
+void editqueue(Node *start, int id);
 int queuelength(Node *start);
 patient registerpatient(Node *start);
 
