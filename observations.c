@@ -143,14 +143,19 @@ int bedsoccupied(observ_arr arr){
     return count;
 }
 observ_arr dischargepatient(observ_arr arr){
-
+     bool died = false;
      int q;
-     printf("Enter Bed Number: ");
+     printf("Enter Bed Number to Discharge. If Patient Died, Enter Negative number: ");
      scanf("%d", &q);
-     while(q<1 || q> 20 ){
+     while(q<-20 || q> 20 && q!=0 ){
             printf(RED"Invalid Bed Number, Please try again: "RESET);
             scanf("%d", &q);
     }
+    if(q<1){
+        died = true;
+        q = q * -1;
+    }
+
     if(arr.beds[q-1].occupied == 0){
         printf(RED"This bed is already empty\n"RESET);
     }else{
@@ -162,9 +167,14 @@ observ_arr dischargepatient(observ_arr arr){
                 patoutcome patty;
                 patty.data = arr.beds[q-1].info;
                 patty.admissiondate = arr.beds[q-1].date;
-                patty.outcome = 2;
+
                 strcpy(patty.diagnosis , arr.beds[q-1].diagnosis);
                 strcpy(patty.treatment , "Medical Observation");
+                if(died){
+                    patty.outcome = 4;
+                }else{
+                    patty.outcome = 2;
+                }
                 savehistory(patty);
             }
             pause();

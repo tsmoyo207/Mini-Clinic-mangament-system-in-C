@@ -92,13 +92,20 @@ void viewhistory(int num){
                     //printf("--------------------------------------------------------------------------------------------------------------------\n");
 
                     }else{
+                        if(outcome == 3){
                         printf("--------------------------------------------------------------------------------------------------------------------\n");
                         printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
                         printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
                         printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
                         printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
                         //printf("--------------------------------------------------------------------------------------------------------------------\n");
-
+                        }else{
+                            printf("--------------------------------------------------------------------------------------------------------------------\n");
+                            printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                            printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
+                            printf(MGT"     Outcome:"RESET"   Died Under Observation\n");
+                            printf(MGT"     Date of Death:"RESET" %s\n", horloge1);
+                        }
                     }
 
                 }
@@ -195,8 +202,8 @@ void viewhistory(int num){
 
         time_t midnight = mktime(&today);
 
-        int count=0, admitted =0, presc =0, obs = 0, refer = 0;
-        int prescribed=0, observationz=0, referals=0,i;
+        int count=0, admitted =0, presc =0, obs = 0, refer = 0, died = 0;
+        int prescribed=0, observationz=0, referals=0,i, diedtoday=0;
 
 
 
@@ -225,8 +232,14 @@ void viewhistory(int num){
                     if(outcome ==2){
                         observationz++;
                     }else{
+                        if(outcome ==3){
                             referals++;
+                    }else{
+                        died++;
                     }
+                  }
+                }
+
 
                 if(releasedate >= midnight){
                     admitted++;
@@ -236,7 +249,12 @@ void viewhistory(int num){
                         if(outcome ==2){
                             obs++;
                         }else{
+                            if(outcome == 3){
                                 refer++;
+                            }else{
+                                diedtoday++;
+                            }
+
                         }
 
                     }
@@ -244,6 +262,7 @@ void viewhistory(int num){
                 }
             }
         }
+        fclose(f);
 
        double maxz = 0,minz = 2000000000.0;
        int occ = bedsoccupied(arr);
@@ -291,6 +310,7 @@ void viewhistory(int num){
         printf(BR_YEL"|     Patients Admitted: "RESET"  %-5d                                       |\n", admitted);
         printf(BR_YEL"|     Patients Discharged: "RESET"%-5d                                       |\n", obs);
         printf(BR_YEL"|     Patients Referred:  "RESET" %-5d                                       |\n", refer);
+        printf(BR_YEL"|     Patients Died:      "RESET" %-5d                                       |\n", diedtoday);
         printf("+----------------------------------------------------------------------+\n");
         printf(YEL"|                              RIGHT NOW                               |\n"RESET);
         printf(BR_YEL"|     Waiting in Queue:  "RESET"  %-5d                                       |\n", que);
@@ -306,12 +326,13 @@ void viewhistory(int num){
         printf(BR_YEL"|     Total patients released with prescription: "RESET"  %-5d               |\n", prescribed);
         printf(BR_YEL"|     Total patients released after observation: "RESET"  %-5d               |\n",observationz);
         printf(BR_YEL"|     Total patients referred to other depatments: "RESET"%-5d               |\n", referals);
+        printf(BR_YEL"|     Total patients Died:                         "RESET"%-5d               |\n", died);
         printf("+----------------------------------------------------------------------+\n");
         free(shorty);
         free(longy);
       }
-      fclose(f);
-    }
+
+
 
 
 
