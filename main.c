@@ -37,9 +37,9 @@ int main(){
             pause();
             break;
         case 2:
-           patient pat  = registerpatient(start);
+           patient pat  = registerpatient();
            start = addpatient(start, pat);
-            pause();
+
             break;
         case 3:
             if (start == NULL){
