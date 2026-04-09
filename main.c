@@ -17,7 +17,8 @@
 
 
 int main(){
-    patient pat;
+    patient pat, currentPatientInRoom;
+    currentPatientInRoom.ticketnum = 0;
     Node *start = loadqueue();
     pat.ticketnum = 0;
     int q, opt1,ticketnumber;
@@ -25,7 +26,7 @@ int main(){
     bool loop = true;
 
     do{
-        printmenu(arr, start);
+        printmenu(arr, start, currentPatientInRoom);
         printf("\n");
         printf("     "BB_WHITE" Enter Option Please: "RESET);
         scanf("%d", &opt1);
@@ -37,10 +38,10 @@ int main(){
             pause();
             break;
         case 2:
-           patient pat  = registerpatient();
+           patient pat  = registerpatient(start);
            start = addpatient(start, pat);
-
-            break;
+           pause();
+           break;
         case 3:
             printf("Enter ticketnumber to remove patient from Queue: ");
             scanf("%d", &ticketnumber);
@@ -50,47 +51,59 @@ int main(){
             if (start == NULL){
                 printf("No patients waiting");
             }else{
-                Node* tmp = start;
-                patoutcome patout;
-                patout.admissiondate = 0;
-                patout.data = tmp->data;
-                printf("Next Patient:"GRN" %s %s "RESET"           Ticket number:"RED_BR" %d\n"RESET,
+                if (currentPatientInRoom.ticketnum == 0){
+                    printf("Next Patient:"GRN" %s %s "RESET"          Ticket number:"RED_BR" %d\n"RESET,
                         start->data.firstname,
-                         start->data.lastname,
-                         start->data.ticketnum
+                        start->data.lastname,
+                        start->data.ticketnum
                          );
-                printf("\n");
-                printf("What was the Doctors Diagnosis: ");
-                scanf(" %[^\n]", patout.diagnosis);
-                printf("\n");
-                printf(CYAN"     CONSULTATION RESULT SUB MENU\n"RESET);
-                printf(CYAN"     [1]"RESET" Discharge with prescription\n");
-                printf(CYAN"     [2]"RESET" Place Under Observarion\n");
-                printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
-                printf(BB_WHITE"     select an option: ");
-                scanf("%d", &patout.outcome);
-                printf("\n");
-                printf("\n");
-                switch(patout.outcome){
-                    case 1:
-                        printf("Enter the Prescription given: ");
-                        scanf(" %[^\n]", patout.treatment);
-                        savehistory(patout);
-                        break;
-                    case 2:
-                        arr = placeobservation(start, arr, patout.diagnosis);
-                        break;
-                    case 3:
-                        printf("Enter Name of Department  reffered to: ");
-                        scanf(" %[^\n]", patout.treatment);
-                        savehistory(patout);
-                        break;
+                    currentPatientInRoom = start->data;
+                }else{
+
+                    Node *temp = start;
+                    start = start->next;
+                    free(temp);
+                    patoutcome patout;
+                    patout.admissiondate = 0;
+                    patout.data = currentPatientInRoom;
+                    printf("Next Patient:"GRN" %s %s "RESET"           Ticket number:"RED_BR" %d\n"RESET,
+                            start->data.firstname,
+                            start->data.lastname,
+                            start->data.ticketnum
+                             );
+                    printf("\n");
+                    printf("What was the Doctors Diagnosis for %s %s: ", currentPatientInRoom.firstname, currentPatientInRoom.lastname);
+                    currentPatientInRoom = start->data;
+                    scanf(" %[^\n]", patout.diagnosis);
+                    printf("\n");
+                    printf(CYAN"     CONSULTATION RESULT SUB MENU\n"RESET);
+                    printf(CYAN"     [1]"RESET" Discharge with prescription\n");
+                    printf(CYAN"     [2]"RESET" Place Under Observarion\n");
+                    printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
+                    printf(BB_WHITE"     select an option: ");
+                    scanf("%d", &patout.outcome);
+                    printf("\n");
+                    printf("\n");
+
+                    switch(patout.outcome){
+                        case 1:
+                            printf("Enter the Prescription given: ");
+                            scanf(" %[^\n]", patout.treatment);
+                            savehistory(patout);
+                            break;
+                        case 2:
+                            arr = placeobservation(start, arr, patout.diagnosis);
+                            break;
+                        case 3:
+                            printf("Enter Name of Department  reffered to: ");
+                            scanf(" %[^\n]", patout.treatment);
+                            savehistory(patout);
+                            break;
+                    }
                 }
-                start = start->next;
-                free(tmp);
-                }
-                pause();
-                break;
+            }
+                    pause();
+                    break;
         case 5:
                 viewobservations(arr);
                 pause();
@@ -121,3 +134,4 @@ int main(){
     }while(loop==true);
     return 0;
 }
+

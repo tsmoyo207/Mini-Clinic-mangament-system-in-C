@@ -53,14 +53,25 @@ int verify(patient pat){
     return 0;
 }
 
-void printmenu(observ_arr arr, Node* start){
+void printmenu(observ_arr arr, Node* start, patient currentPatientInRoom){
     int x = queuelength(start);
     int y = bedsoccupied(arr);
-    printf("     "CYAN CN HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ CN"\n" RESET);
-    printf("     "VN"     HOSPITAL MANAGEMENT SYSTEM V1.0     "VN"\n" );
-    printf("     "CYAN CN HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ  HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ CN"\n" RESET);
-    printf( "     "VN "       QUEUE: "CYAN"%-3d "RESET "patients Beds: "CYAN"%-2d/%-2d "RESET"  "  VN"\n", x, y, maxbeds);
-    printf("     "CYAN CN HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ HZ CN"\n" RESET);
+
+    printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
+    printf("     |                  HOSPITAL MANAGEMENT SYSTEM V1.0                        |\n" );
+    printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
+    printf("     |                    QUEUE: "CYAN"%-3d "RESET "patients Beds: "CYAN"%-2d/%-2d "RESET"                     |\n", x, y, maxbeds);
+    printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
+    if (currentPatientInRoom.ticketnum == 0){
+        printf("     |                  Doctor Is Not Seeing Anyone at the moment              |\n");
+    }else{
+        printf("     |    Doctor Is Now Seeing: "CYAN"%-10s %-10s    "RESET"ticketNumber:"CYAN" %-4d    | \n" RESET,
+               currentPatientInRoom.firstname,
+               currentPatientInRoom.lastname,
+               currentPatientInRoom.ticketnum );
+    }
+
+    printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     printf("\n");
     printf("     "CYAN" [1]"RESET" View Patient Queue.\n");
     printf("     "CYAN" [2]"RESET" Add Patient to Queue.\n");
