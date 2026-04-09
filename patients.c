@@ -248,14 +248,14 @@ patient registerpatient(Node *start){
         fclose(f);
         char option, option2;
         if (inrecords){
-            printf("We Found a records with the same ID under the name %s %s.\n", rey.firstname, rey.lastname);
-            printf("Is the patient back for a review? (Y/n)\n");
+            printf("We Found a records with the same ID under the name "CYAN"%s %s.\n"RESET, rey.firstname, rey.lastname);
+            printf("Is the patient back for a review? (Y/n): ");
             scanf(" %c", &option2);
             if (option2 == 'Y' || option2 == 'y'){
                     pat = rey;
                     pat.priority = 1;
             }else{
-                printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?  ");
+                printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?:  ");
                 scanf(" %c", &option);
                 if (option == 'Y' || option == 'y'){
                     strcpy(pat.firstname, rey.firstname);
@@ -330,7 +330,7 @@ patient registerpatient(Node *start){
 Node* removepatient(Node *start, int ticketnumber){
     patient pat;
     if(start == NULL){
-        printf("the queue is empty\n");
+        printf(RED"the queue is empty\n"RESET);
         return NULL;
     }
 
@@ -343,7 +343,7 @@ Node* removepatient(Node *start, int ticketnumber){
     }
 
     if(current == NULL){
-        printf("ticketnum #%d not found", ticketnumber);
+        printf(RED"ticketnum #%d not found"RESET, ticketnumber);
         return start;
     }
     pat = current->data;
@@ -371,7 +371,7 @@ void editqueue(Node *start, int id){
 
     patient pat;
     if(start == NULL){
-        printf("the queue is empty\n");
+        printf(RED"the queue is empty\n"RESET);
     }else{
         Node *current = start;
         while(current != NULL && current->data.id != id){
@@ -379,13 +379,13 @@ void editqueue(Node *start, int id){
         }
 
         if(current == NULL){
-            printf("id #%d not found", id);
+            printf(RED"id #%d not found"RESET, id);
         }else{
             current->data.id = 0;
             patient pat = registerpatient(start);
             pat.ticketnum = current->data.ticketnum;
             current->data = pat;
-            printf("record edited successfully\n");
+            printf(GRN"record edited successfully\n"RESET);
         }
     }
     printf("\n");

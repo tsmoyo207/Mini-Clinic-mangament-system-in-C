@@ -79,9 +79,6 @@ void viewhistory(int num){
             printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis );
             printf(MGT"     Outcome:"RESET" Placed Under Observation for %s\n", observed );
             printf(MGT"     Date of Admission:"RESET" %s "MGT"        Date of Release: "RESET"%s\n", horloge2, horloge1 );
-            //printf("--------------------------------------------------------------------------------------------------------------------\n");
-
-
             }else{
                 if(outcome == 1){
                     printf("--------------------------------------------------------------------------------------------------------------------\n");
@@ -89,8 +86,6 @@ void viewhistory(int num){
                     printf(MGT"     Diagnosis:"RESET" %s\n",diagnosis);
                     printf(MGT"     Outcome:"RESET"   Discharged with the following prescription: %s\n", treatment);
                     printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
-                    //printf("--------------------------------------------------------------------------------------------------------------------\n");
-
                     }else{
                         if(outcome == 3){
                         printf("--------------------------------------------------------------------------------------------------------------------\n");
@@ -98,7 +93,6 @@ void viewhistory(int num){
                         printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
                         printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
                         printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
-                        //printf("--------------------------------------------------------------------------------------------------------------------\n");
                         }else{
                             printf("--------------------------------------------------------------------------------------------------------------------\n");
                             printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
@@ -113,7 +107,7 @@ void viewhistory(int num){
             }
              if(empty){
                 printf(RED"No history Recorded"RESET);
-                }
+            }
         }else{
             while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
                       firstname,
@@ -132,7 +126,7 @@ void viewhistory(int num){
                     if(id == num){
                           if(!found){
                                 printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
-                            }
+                          }
 
                         char *horloge1 = ctime(&releasedate);
                         horloge1[24] = '\0';
@@ -157,184 +151,165 @@ void viewhistory(int num){
                                     printf(MGT"     Diagnosis:"RESET" %s\n",diagnosis);
                                     printf(MGT"     Outcome:"RESET"   Discharged with the following prescription: %s\n", treatment);
                                     printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
-                                    //printf("--------------------------------------------------------------------------------------------------------------------\n");
-
-                                    }else{
-                                        printf("--------------------------------------------------------------------------------------------------------------------\n");
-                                        printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
-                                        printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
-                                        printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
-                                        printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
-                                        //printf("--------------------------------------------------------------------------------------------------------------------\n");
-
-                                    }
-
+                                }else{
+                                    printf("--------------------------------------------------------------------------------------------------------------------\n");
+                                    printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                                    printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
+                                    printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
+                                    printf(MGT"     Date of Consulation:"RESET" %s\n", horloge1);
                                 }
-                                found = true;
-
-
                             }
-
-
-                        }
-                        if (!found){
-                            printf(RED"Record not found\n"RESET);
+                            found = true;
                         }
 
-
-        }
+                    }
+                    if (!found){
+                        printf(RED"Record not found\n"RESET);
+                    }
+            }
     }
 }
-    void statistics(Node *start, observ_arr arr){
-        FILE* f = fopen("patienthistory.csv", "r");
-        int id, day, month, year;
-        char gender;
-        bool empty = true, found = false;
-        char firstname[100], lastname[100], diagnosis[100], treatment[100];
-        int outcome;
-        time_t releasedate, admissiondate, now= time(NULL);
-        struct tm *t = localtime(&now);
-        struct tm today = *t;
+void statistics(Node *start, observ_arr arr){
+    FILE* f = fopen("patienthistory.csv", "r");
+    int id, day, month, year;
+    char gender;
+    bool empty = true, found = false;
+    char firstname[100], lastname[100], diagnosis[100], treatment[100];
+    int outcome;
+    time_t releasedate, admissiondate, now= time(NULL);
+    struct tm *t = localtime(&now);
+    struct tm today = *t;
 
-        today.tm_hour = 0;
-        today.tm_min = 0;
-        today.tm_sec = 0;
+    today.tm_hour = 0;
+    today.tm_min = 0;
+    today.tm_sec = 0;
 
-        time_t midnight = mktime(&today);
+    time_t midnight = mktime(&today);
 
-        int count=0, admitted =0, presc =0, obs = 0, refer = 0, died = 0;
-        int prescribed=0, observationz=0, referals=0,i, diedtoday=0;
-
-
-
-        if (!f) {
-            printf(RED"Error opening file\n"RESET);
-        }else{
-
-            while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
-                      firstname,
-                      lastname,
-                      &id,
-                      &day,
-                      &month,
-                      &year,
-                      &gender,
-                      diagnosis,
-                      &outcome,
-                      treatment,
-                      &releasedate,
-                      &admissiondate)) == 12){
-
-                count++;
-                if(outcome == 1){
-                    prescribed++;
-                }else{
-                    if(outcome ==2){
-                        observationz++;
-                    }else{
-                        if(outcome ==3){
-                            referals++;
-                    }else{
-                        died++;
-                    }
-                  }
-                }
+    int count=0, admitted =0, presc =0, obs = 0, refer = 0, died = 0;
+    int prescribed=0, observationz=0, referals=0,i, diedtoday=0;
 
 
-                if(releasedate >= midnight){
-                    admitted++;
+    if (!f) {
+        printf(RED"Error opening file\n"RESET);
+    }else{
+
+        while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+                firstname,
+                lastname,
+                &id,
+                &day,
+                &month,
+                &year,
+                &gender,
+                diagnosis,
+                &outcome,
+                treatment,
+                &releasedate,
+                &admissiondate)) == 12){
+
+                    count++;
                     if(outcome == 1){
-                        presc++;
+                        prescribed++;
                     }else{
                         if(outcome ==2){
-                            obs++;
+                            observationz++;
                         }else{
-                            if(outcome == 3){
-                                refer++;
+                            if(outcome ==3){
+                                referals++;
+                        }else{
+                            died++;
+                        }
+                      }
+                    }
+
+
+                    if(releasedate >= midnight){
+                        admitted++;
+                        if(outcome == 1){
+                            presc++;
+                        }else{
+                            if(outcome ==2){
+                                obs++;
                             }else{
-                                diedtoday++;
+                                if(outcome == 3){
+                                    refer++;
+                                }else{
+                                    diedtoday++;
+                                }
+
                             }
 
                         }
 
                     }
-
                 }
+    }
+    fclose(f);
+
+    double maxz = 0,minz = 2000000000.0;
+    int occ = bedsoccupied(arr);
+
+    for(i=0;i<maxbeds;i++){
+        if(arr.beds[i].occupied == 1){
+            double x = difftime(now, arr.beds[i].date);
+            if(x<minz){
+                minz=x;
+            }
+            if(x>maxz){
+                maxz=x;
             }
         }
-        fclose(f);
+    }
 
-       double maxz = 0,minz = 2000000000.0;
-       int occ = bedsoccupied(arr);
+    char *shorty, *longy;
 
-       for(i=0;i<maxbeds;i++){
-            if(arr.beds[i].occupied == 1){
-                double x = difftime(now, arr.beds[i].date);
-                if(x<minz){
-                    minz=x;
-                }
-                if(x>maxz){
-                    maxz=x;
-                }
-            }
+    shorty = duration(minz);
+    longy =  duration(maxz);
 
-
-       }
-
-        char *shorty, *longy;
-
-        shorty = duration(minz);
-        longy =  duration(maxz);
-
-       int high=0, low=0, med =0;
-        int que = 0;
-        while(start != NULL){
-            que++;
-            if (start->data.priority==1){
-                low++;
-
+    int high=0, low=0, med =0;
+    int que = 0;
+    while(start != NULL){
+        que++;
+        if (start->data.priority==1){
+            low++;
+        }else{
+            if (start->data.priority==2){
+                med++;
             }else{
-                if (start->data.priority==2){
-                    med++;
-                }else{
-                    high++;
+                high++;
             }
-
         }
         start = start->next;
     }
-        printf("+----------------------------------------------------------------------+\n");
-        printf(YEL"|                        HOSPITAL STATISTICS                           |\n"RESET);
-        printf("+----------------------------------------------------------------------+\n");
-        printf(YEL"|                              TODAY                                   |\n"RESET);
-        printf(BR_YEL"|     Patients Admitted: "RESET"  %-5d                                       |\n", admitted);
-        printf(BR_YEL"|     Patients Discharged: "RESET"%-5d                                       |\n", obs);
-        printf(BR_YEL"|     Patients Referred:  "RESET" %-5d                                       |\n", refer);
-        printf(BR_YEL"|     Patients Died:      "RESET" %-5d                                       |\n", diedtoday);
-        printf("+----------------------------------------------------------------------+\n");
-        printf(YEL"|                              RIGHT NOW                               |\n"RESET);
-        printf(BR_YEL"|     Waiting in Queue:  "RESET"  %-5d                                       |\n", que);
-        printf(BR_YEL"|     High Priority:    "RESET"   %-5d                                       |\n", high);
-        printf(BR_YEL"|     Medium Priority:  "RESET"   %-5d                                       |\n", med);
-        printf(BR_YEL"|     Low Priority:     "RESET"   %-5d                                       |\n", low);
-        printf(BR_YEL"|     Beds Occupied:   "RESET"    %-5d                                       |\n", occ);
-        printf(BR_YEL"|     Longest stay:    "RESET"    %-43s |\n", longy);
-        printf(BR_YEL"|     Shortest stay:   "RESET"    %-43s |\n", shorty);
-        printf("+----------------------------------------------------------------------+\n");
-        printf(YEL"|                              ALL TIME                                |\n"RESET);
-        printf(BR_YEL"|     Total Records in History:      "RESET"              %-5d               |\n",count);
-        printf(BR_YEL"|     Total patients released with prescription: "RESET"  %-5d               |\n", prescribed);
-        printf(BR_YEL"|     Total patients released after observation: "RESET"  %-5d               |\n",observationz);
-        printf(BR_YEL"|     Total patients referred to other depatments: "RESET"%-5d               |\n", referals);
-        printf(BR_YEL"|     Total patients Died:                         "RESET"%-5d               |\n", died);
-        printf("+----------------------------------------------------------------------+\n");
-        free(shorty);
-        free(longy);
-      }
-
-
-
-
+    printf("+----------------------------------------------------------------------+\n");
+    printf(YEL"|                        HOSPITAL STATISTICS                           |\n"RESET);
+    printf("+----------------------------------------------------------------------+\n");
+    printf(YEL"|                              TODAY                                   |\n"RESET);
+    printf(BR_YEL"|     Patients Admitted: "RESET"  %-5d                                       |\n", admitted);
+    printf(BR_YEL"|     Patients Discharged: "RESET"%-5d                                       |\n", obs);
+    printf(BR_YEL"|     Patients Referred:  "RESET" %-5d                                       |\n", refer);
+    printf(BR_YEL"|     Patients Died:      "RESET" %-5d                                       |\n", diedtoday);
+    printf("+----------------------------------------------------------------------+\n");
+    printf(YEL"|                              RIGHT NOW                               |\n"RESET);
+    printf(BR_YEL"|     Waiting in Queue:  "RESET"  %-5d                                       |\n", que);
+    printf(BR_YEL"|     High Priority:    "RESET"   %-5d                                       |\n", high);
+    printf(BR_YEL"|     Medium Priority:  "RESET"   %-5d                                       |\n", med);
+    printf(BR_YEL"|     Low Priority:     "RESET"   %-5d                                       |\n", low);
+    printf(BR_YEL"|     Beds Occupied:   "RESET"    %-5d                                       |\n", occ);
+    printf(BR_YEL"|     Longest stay:    "RESET"    %-43s |\n", longy);
+    printf(BR_YEL"|     Shortest stay:   "RESET"    %-43s |\n", shorty);
+    printf("+----------------------------------------------------------------------+\n");
+    printf(YEL"|                              ALL TIME                                |\n"RESET);
+    printf(BR_YEL"|     Total Records in History:      "RESET"              %-5d               |\n",count);
+    printf(BR_YEL"|     Total patients released with prescription: "RESET"  %-5d               |\n", prescribed);
+    printf(BR_YEL"|     Total patients released after observation: "RESET"  %-5d               |\n",observationz);
+    printf(BR_YEL"|     Total patients referred to other depatments: "RESET"%-5d               |\n", referals);
+    printf(BR_YEL"|     Total patients Died:                         "RESET"%-5d               |\n", died);
+    printf("+----------------------------------------------------------------------+\n");
+    free(shorty);
+    free(longy);
+    }
 
 char *duration(double seconds){
 
@@ -360,8 +335,7 @@ char *duration(double seconds){
                         sprintf(abc, "%d days %d hours %d minutes and %d seconds",y, z, u, v);
                     }
                 }
-            }
-
-    return abc;
+        }
+        return abc;
 }
 

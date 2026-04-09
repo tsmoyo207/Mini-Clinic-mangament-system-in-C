@@ -29,7 +29,10 @@ int main(){
         printmenu(arr, start, currentPatientInRoom);
         printf("\n");
         printf("     "BB_WHITE" Enter Option Please: "RESET);
-        scanf("%d", &opt1);
+        while((scanf("%d", &opt1))!= 1){
+                printf(RED"Invalid input!" RESET "Please Enter a number: ");
+                while(getchar() != '\n');
+                }
         printf("\n");
         printf("\n");
         switch(opt1){
@@ -44,14 +47,21 @@ int main(){
            break;
         case 3:
             printf("Enter the patient's id: ");
-            scanf("%d", &id);
+            while((scanf("%d", &id))!= 1){
+                printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                while(getchar() != '\n');
+            }
             editqueue(start, id);
             pause();
             break;
         case 4:
             printf("Enter ticketnumber to remove patient from Queue: ");
-            scanf("%d", &ticketnumber);
+            while((scanf("%d", &ticketnumber))!= 1){
+                printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                while(getchar() != '\n');
+            }
             start = removepatient(start,ticketnumber);
+            pause();
             break;
         case 5:
             if (start == NULL){
@@ -82,34 +92,44 @@ int main(){
                     currentPatientInRoom = start->data;
                     scanf(" %[^\n]", patout.diagnosis);
                     printf("\n");
-                    printf(CYAN"     CONSULTATION RESULT SUB MENU\n"RESET);
-                    printf(CYAN"     [1]"RESET" Discharge with prescription\n");
-                    printf(CYAN"     [2]"RESET" Place Under Observarion\n");
-                    printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
-                    printf(BB_WHITE"     select an option: ");
-                    scanf("%d", &patout.outcome);
-                    printf("\n");
-                    printf("\n");
+                    do{
+                        printf(CYAN"     CONSULTATION RESULT SUB MENU\n"RESET);
+                        printf(CYAN"     [1]"RESET" Discharge with prescription\n");
+                        printf(CYAN"     [2]"RESET" Place Under Observarion\n");
+                        printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
+                        printf(BB_WHITE"     select an option: ");
+                        while((scanf("%d", &patout.outcome))!= 1){
+                        printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                        while(getchar() != '\n');
+                        }
+                        printf("\n");
+                        printf("\n");
 
-                    switch(patout.outcome){
-                        case 1:
-                            printf("Enter the Prescription given: ");
-                            scanf(" %[^\n]", patout.treatment);
-                            savehistory(patout);
-                            break;
-                        case 2:
-                            arr = placeobservation(start, arr, patout.diagnosis);
-                            break;
-                        case 3:
-                            printf("Enter Name of Department  reffered to: ");
-                            scanf(" %[^\n]", patout.treatment);
-                            savehistory(patout);
-                            break;
-                    }
+                        switch(patout.outcome){
+                            case 1:
+                                printf("Enter the Prescription given: ");
+                                scanf(" %[^\n]", patout.treatment);
+                                savehistory(patout);
+                                break;
+                            case 2:
+                                arr = placeobservation(start, arr, patout.diagnosis);
+                                break;
+                            case 3:
+                                printf("Enter Name of Department  reffered to: ");
+                                scanf(" %[^\n]", patout.treatment);
+                                savehistory(patout);
+                                break;
+                            default:
+                                printf(RED"Invalid option!"RESET " Please enter a number between 1 and 3");
+                                printf("\n");
+                                printf("\n");
+                                break;
+                        }
+                    }while(patout.outcome != 3 && patout.outcome != 2 && patout.outcome != 1);
                 }
+                pause();
             }
-                    pause();
-                    break;
+            break;
         case 6:
                 viewobservations(arr);
                 pause();
@@ -120,7 +140,10 @@ int main(){
         case 8:
                 int num;
                 printf("Enter Specific ID to search for record or 0 to show all records: ");
-                scanf("%d", &num);
+                while((scanf("%d", &num))!= 1){
+                    printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                    while(getchar() != '\n');
+                }
                 viewhistory(num);
                 pause();
                 break;
@@ -135,6 +158,10 @@ int main(){
                 saveobservations(arr);
                 freequeue(start);
                 loop = false;
+                break;
+        default:
+                printf(RED"Invalid selection!"RESET " Please enter a number between 0 and 9 \n");
+                pause();
                 break;
             }
     }while(loop==true);
