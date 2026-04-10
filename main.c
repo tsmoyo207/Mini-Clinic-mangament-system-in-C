@@ -8,14 +8,6 @@
 #include "utility.h"
 #include "records.h"
 
-//What if we ask the outcome of the preveous Patient instead of the current cause it seems like you'd have to wait till he's finished
-//you need an age calulator function
-//you need to prioritise children and old ladies a little bit more than regaulr Patients
-//you need to separate case 2, 3 and 5 from your main menu into separate functions. Call them handleaddPatient, handle.....
-//you need to check the national ID when user is entering details to see if user has ever been here before then autofill the rest
-//you need to allow editing of the queue, that is the a Patient being removed from the queue or moving up or down the queue or editing the record on the queeu
-
-
 int main(){
     Patient pat, currentPatientInRoom;
     currentPatientInRoom.ticketnum = 0;
@@ -47,7 +39,7 @@ int main(){
            break;
         case 3:
             printf("Enter the Patient's id: ");
-            while((scanf("%d", &id))!= 1){
+            while((scanf("%d", &id))!= 1){//Makes Sure user enters a number
                 printf(RED"Invalid input!" RESET " Please Enter a number: ");
                 while(getchar() != '\n');
             }
@@ -67,7 +59,8 @@ int main(){
             if (start == NULL){
                 printf("No patients waiting\n");
             }else{
-                if (currentPatientInRoom.ticketnum == 0){
+
+                if (currentPatientInRoom.ticketnum == 0){//This means No one is seeing the Doctor at the moment
                     printf("Next Patient:"GRN" %s %s "RESET"          Ticket number:"RED_BR" %d\n"RESET,
                         start->data.firstname,
                         start->data.lastname,

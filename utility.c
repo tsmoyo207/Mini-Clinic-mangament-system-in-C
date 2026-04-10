@@ -9,7 +9,8 @@
 #define HZ  "-"
 #define VN  "|"
 
-
+/**This Procedure waits for the user to press enter then it clears the terminal
+*/
 void pause() {
     printf(GREY "\nPress Enter to continue..." RESET);
     while(getchar() != '\n');
@@ -17,9 +18,10 @@ void pause() {
     system("cls");
 }
 
+/**This Function validates the patient record. it returns 0 only if the record meets all criterias
+*/
 int validatePatient(Patient pat){
     int i,j;
-
     if (pat.dob.day < 1 || pat.dob.day > 31){
         return 1;
     }
@@ -38,7 +40,6 @@ int validatePatient(Patient pat){
     if(pat.priority < 1 || pat.priority > 3){
         return 7;
     }
-
     for(i=0;i<strlen(pat.firstname);i++){
             if(!(isalpha(pat.firstname[i]))){
                 return 3;
@@ -48,15 +49,15 @@ int validatePatient(Patient pat){
             if(!(isalpha(pat.lastname[j]))){
                return 4;
             }
-
     }
     return 0;
 }
-
+/**This Procedure prints the menu. which includes size if queue,
+beds occupied and displays which patient is seeing the doctor
+*/
 void printmenu(Ward ward, Node* start, Patient currentPatientInRoom){
     int x = queuelength(start);
     int y = bedsoccupied(ward);
-
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     printf("     |                  HOSPITAL MANAGEMENT SYSTEM V1.0                        |\n" );
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
@@ -70,7 +71,6 @@ void printmenu(Ward ward, Node* start, Patient currentPatientInRoom){
                currentPatientInRoom.lastname,
                currentPatientInRoom.ticketnum );
     }
-
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     printf("\n");
     printf("     "CYAN" [1]"RESET" View Patient Queue.\n");
@@ -83,11 +83,10 @@ void printmenu(Ward ward, Node* start, Patient currentPatientInRoom){
     printf("     "CYAN" [8]"RESET" Search History or View All Patient History Records.\n");
     printf("     "CYAN" [9]"RESET" View Hospital Statistics.\n");
     printf("     "CYAN" [0]"RESET" Save and Exit.\n");
-
-
-
 }
 
+/**This procedure frees the queue
+*/
 void freequeue(Node *start){
     Node *tmp;
     while(start != NULL){
@@ -97,6 +96,8 @@ void freequeue(Node *start){
     }
 }
 
+/**This Function calculates a patients age
+*/
 int age(date birth) {
     time_t timestamp = time(NULL);
     struct tm *t = localtime(&timestamp);
