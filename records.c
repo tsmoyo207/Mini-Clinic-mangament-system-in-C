@@ -7,14 +7,19 @@
 #include "constants.h"
 #include "observations.h"
 
+/**
+* This procedure save the results of the consultation to a CSV file, it appends.
+*/
+
 void appendConsultationRecord(ConsulatationRecord record){
 
     FILE* f = fopen("patienthistory.csv", "a");
     if (!f) {
+        // Validate if its a file or not for error reduction.
         printf("Error opening patient history file\n");
     }else{
         char outcome[50];
-        record.releasedate = time(NULL);
+        record.releasedate = time(NULL);// This save the time at which the record is saved.
         fprintf(f, "%s, %s, %d, %d, %d, %d, %c, \"%s\", %d ,\"%s\", %ld, %ld\n",
                 record.data.firstname,
                 record.data.lastname,
@@ -34,6 +39,11 @@ void appendConsultationRecord(ConsulatationRecord record){
     fclose(f);
 }
 
+/**
+* This procedure reads the patients's history from a CSV file.
+* Allows to search for a patient using their id or enter a default option to view all patients.
+*/
+
 void viewhistory(int searchID){
     FILE* f = fopen("patienthistory.csv", "r");
     int id, day, month, year;
@@ -46,6 +56,7 @@ void viewhistory(int searchID){
 
 
         if (!f) {
+        // Validate if its a file or not to minimize errors.
         printf(RED"Error opening file\n"RESET);
     }else{
          if (searchID==0){
@@ -65,14 +76,15 @@ void viewhistory(int searchID){
         if(notPrintedYet){
             printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
         }
-        char *releaseDate = ctime(&releasedate);
-        releaseDate[24] = '\0';
+        char *releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings.
+        releaseDate[24] = '\0';// Removes default new line added by ctime.
 
         if(outcome == 2){
-            char *admissionDate = ctime(&admissiondate);
-            admissionDate[24] = '\0';
-            double observationDuration = difftime(releasedate, admissiondate);
-            char *observed = duration(observationDuration);
+            char *admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings.
+            admissionDate[24] = '\0';// Removes default new line added by ctime.
+
+            double observationDuration = difftime(releasedate, admissiondate);//Calculates the length between 2 timestamps
+            char *observed = duration(observationDuration);//Converts difftime into human readable string
 
             printf("--------------------------------------------------------------------------------------------------------------------\n");
             printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-6d                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
@@ -129,14 +141,15 @@ void viewhistory(int searchID){
                                 printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
                           }
 
-                        char *releaseDate = ctime(&releasedate);
-                        releaseDate[24] = '\0';
+                        char *releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings
+                        releaseDate[24] = '\0';// Removes default new line added by ctime.
+
 
                         if(outcome == 2){
-                            char *admissionDate = ctime(&admissiondate);
-                            admissionDate[24] = '\0';
-                            double observationDuration = difftime(releasedate, admissiondate);
-                            char *observed = duration(observationDuration);
+                            char *admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings
+                            admissionDate[24] = '\0';// Removes default new line added by ctime.
+                            double observationDuration = difftime(releasedate, admissiondate);//Calculates the length between 2 timestamps
+                            char *observed = duration(observationDuration);//Converts difftime into human readable string
 
                             printf("--------------------------------------------------------------------------------------------------------------------\n");
                             printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-6d                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
@@ -165,11 +178,16 @@ void viewhistory(int searchID){
 
                     }
                     if (!found){
+                        // Validate if the Id is in the record or not
                         printf(RED"Record not found\n"RESET);
                     }
             }
     }
 }
+
+/**
+* This procedure reads the CSV and performs several operations and displays them.
+*/
 void statistics(Node *start, Ward ward){
     FILE* f = fopen("patienthistory.csv", "r");
     int id, day, month, year;
@@ -178,12 +196,12 @@ void statistics(Node *start, Ward ward){
     char firstname[100], lastname[100], diagnosis[100], treatment[100];
     int outcome;
     time_t releasedate, admissiondate, now= time(NULL);
-    struct tm *t = localtime(&now);
+    struct tm *t = localtime(&now);//timestamp for current time
     struct tm today = *t;
 
-    today.tm_hour = 0;
-    today.tm_min = 0;
-    today.tm_sec = 0;
+    today.tm_hour = 0;//intializing time in hours
+    today.tm_min = 0;//intializing time in min
+    today.tm_sec = 0;//intializing time in sec
 
     time_t midnight = mktime(&today);
 
@@ -192,9 +210,9 @@ void statistics(Node *start, Ward ward){
 
 
     if (!f) {
+        //Validates if its a file or not.
         printf(RED"Error opening file\n"RESET);
     }else{
-
         while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
                 firstname,
                 lastname,
@@ -247,7 +265,7 @@ void statistics(Node *start, Ward ward){
                 }
     }
     fclose(f);
-
+    //this block of code calculates which patients in the ward have been there the longest or shortest.
     double max = 0,min = 2000000000.0;
     int occupiedBeds = bedsoccupied(ward);
 
@@ -262,12 +280,10 @@ void statistics(Node *start, Ward ward){
             }
         }
     }
-
     char *shortestStay, *longestStay;
-
     shortestStay = duration(min);
     longestStay =  duration(max);
-
+    // this block of code counts the number of patients in each priority group.
     int highPriorities=0, lowPriorities=0, medPriorities =0;
     int queueSize = 0;
     while(start != NULL){
@@ -311,8 +327,11 @@ void statistics(Node *start, Ward ward){
     printf("+----------------------------------------------------------------------+\n");
     free(shortestStay);
     free(longestStay);
-    }
+}
 
+/**
+* This function converts number of seconds into a human readable string.
+*/
 char *duration(double observationDuration){
 
     char *result = malloc(70*sizeof(char));
