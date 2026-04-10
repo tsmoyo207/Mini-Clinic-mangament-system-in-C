@@ -18,30 +18,30 @@ typedef struct{
     char gender;
     int priority;
     char issue[100];
-}patient;
+}Patient;
 
 typedef struct Node{
-    patient data;
+    Patient data;
     struct Node *next;
 }Node;
 
 typedef struct{
-    patient data;
+    Patient data;
     int outcome;
     char diagnosis[200];
     char treatment[200];
     time_t admissiondate;
     time_t releasedate;
-}patoutcome;
+}ConsulatationRecord;
 
 void viewqueue(Node *temp);
-Node* addpatient(Node *start, patient pat);
+Node* enqueuePatient(Node *start, Patient pat);
 Node* loadqueue();
-Node* removepatient(Node *start, int ticketnumber);
+Node* dequeuePatient(Node *start, int ticketnumber);
 void savequeue(Node *start);
 void editqueue(Node *start, int id);
 int queuelength(Node *start);
-patient registerpatient(Node *start);
+Patient registerpatient(Node *start);
 
 
 

@@ -65,7 +65,7 @@ void viewqueue(Node *temp){
 
 Node* loadqueue(){
     FILE* f = fopen("patientqueue.csv", "r");
-    patient pat;
+    Patient pat;
     Node  *start = NULL;
     if (!f) {
         printf("Error opening patient queue file\n");
@@ -95,12 +95,13 @@ Node* loadqueue(){
                 current = newNode;
             }
         }
+        fclose(f);
     }
-    fclose(f);
+
     return start;
 }
 
-Node* addpatient(Node *start, patient pat){
+Node* enqueuePatient(Node *start, Patient pat){
     Node *current = NULL, *newNode= NULL;
     Node *prev = NULL, *size;
     newNode = malloc(sizeof(Node));
@@ -108,7 +109,7 @@ Node* addpatient(Node *start, patient pat){
     newNode->next= NULL;
     date dob;
     dob = pat.dob;
-    int oldness = age(dob);
+    int patientAge = age(dob);
     if(start == NULL){
         newNode->data.ticketnum = 1000;
         start = newNode;
@@ -117,7 +118,7 @@ Node* addpatient(Node *start, patient pat){
         current = start;
         size = current;
 
-        if (oldness > 60 || oldness < 10){
+        if (patientAge > 60 || patientAge < 10){
             while(current->next != NULL && current->data.priority > pat.priority){
             prev = current;
             current = current->next;
@@ -128,15 +129,15 @@ Node* addpatient(Node *start, patient pat){
             current = current->next;
         }
         }
-        int x = size->data.ticketnum;
+        int maxTicketNum = size->data.ticketnum;
         while(size != NULL){
-            if(x < size->data.ticketnum){
-                x = size->data.ticketnum;
+            if(maxTicketNum < size->data.ticketnum){
+                maxTicketNum = size->data.ticketnum;
             }
             size = size->next;
         }
-        x++;
-        newNode->data.ticketnum = x;
+        maxTicketNum++;
+        newNode->data.ticketnum = maxTicketNum;
         if(current == start){
             newNode->next = current;
             start = newNode;
@@ -186,115 +187,111 @@ int queuelength(Node *start){
     return count;
 }
 
-patient registerpatient(Node *start){
-    patient pat, rec, rey;
+Patient registerpatient(Node *start){
+    Patient newPatient, csvRecord, cachedRecord;
     bool inqueue = false, inrecords = false;
     int valid = 0;
+    Node *temp = start;
 
 
         do{
+            valid = 0;
             inqueue = false;
             printf("Enter ID Number: ");
-            while((scanf("%d", &pat.id))!= 1){
+            while((scanf("%d", &newPatient.id))!= 1){
                 printf(RED"Invalid input!" RESET "Please Enter a number: ");
                 while(getchar() != '\n');
                 }
-
             do{
-                if(pat.id == start->data.id){
-                    inqueue = true;
-                }else{
-                    start = start->next;
+                temp = start;
+                if(temp != NULL){
+                    do{
+                        if(newPatient.id == temp->data.id){
+                            inqueue = true;
+                        }else{
+                            temp = temp->next;
+                        }
+                    }while(temp != NULL && inqueue == false);
                 }
-            }while(start != NULL && inqueue == false);
-
-            if(inqueue){
-                printf(RED"Error " RESET "Patient Already in Queue: \n");
-            }
-
+                if(inqueue){
+                    printf(RED"Error " RESET "Patient Already in Queue: \n");
+                }
             }while(inqueue == true);
 
 
-    FILE* f = fopen("patienthistory.csv", "r");
-    int id, day, month, year;
-    char gender;
-    bool empty = true, found = false;
-    char firstname[100], lastname[100], diagnosis[100], treatment[100];
-    int outcome;
-    time_t releasedate, admissiondate;
 
+        FILE* f = fopen("patienthistory.csv", "r");
         if (!f) {
             printf("");
         }else{
-            while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
-                      rec.firstname,
-                      rec.lastname,
-                      &rec.id,
-                      &rec.dob.day,
-                      &rec.dob.month,
-                      &rec.dob.year,
-                      &rec.gender,
-                      rec.issue,
-                      &outcome,
-                      treatment,
-                      &releasedate,
-                      &admissiondate)) == 12 && inrecords == false){
+            while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" ",
+                      csvRecord.firstname,
+                      csvRecord.lastname,
+                      &csvRecord.id,
+                      &csvRecord.dob.day,
+                      &csvRecord.dob.month,
+                      &csvRecord.dob.year,
+                      &csvRecord.gender,
+                      csvRecord.issue
+                      )) == 8 && inrecords == false){
 
-                rey = rec;
-                if(pat.id == rec.id){
+                cachedRecord = csvRecord;
+                if(newPatient.id == csvRecord.id){
                     inrecords = true;
                 }
-                      }
-        fclose(f);
+            }
+            fclose(f);
+        }
+
         char option, option2;
         if (inrecords){
-            printf("We Found a records with the same ID under the name "CYAN"%s %s.\n"RESET, rey.firstname, rey.lastname);
-            printf("Is the patient back for a review? (Y/n): ");
+            printf("We Found a records with the same ID under the name "CYAN"%s %s.\n"RESET, cachedRecord.firstname, cachedRecord.lastname);
+            printf("Is the Patient back for a review? (Y/n): ");
             scanf(" %c", &option2);
             if (option2 == 'Y' || option2 == 'y'){
-                    pat = rey;
-                    pat.priority = 1;
+                    newPatient = cachedRecord;
+                    newPatient.priority = 1;
             }else{
                 printf("Should we autofill Firstname and Lastname, Date of Birth and Gender (Y/n)?:  ");
                 scanf(" %c", &option);
                 if (option == 'Y' || option == 'y'){
-                    strcpy(pat.firstname, rey.firstname);
-                    strcpy(pat.lastname, rey.lastname);
-                    pat.dob = rey.dob;
-                    pat.gender = rey.gender;
+                    strcpy(newPatient.firstname, cachedRecord.firstname);
+                    strcpy(newPatient.lastname, cachedRecord.lastname);
+                    newPatient.dob = cachedRecord.dob;
+                    newPatient.gender = cachedRecord.gender;
 
                 }else{
                     printf("Enter Firstname and Surname: ");
-                    scanf("%s %s", pat.firstname, pat.lastname);
+                    scanf("%s %s", newPatient.firstname, newPatient.lastname);
                     printf("Enter Date of Birth (DD MM YYYY): ");
-                    while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
+                    while((scanf("%d %d %d", &newPatient.dob.day, &newPatient.dob.month, &newPatient.dob.year )!= 3)){
                             printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
                             while(getchar() != '\n');
                             }
                     printf("Enter Gender(M/F): ");
-                    scanf(" %c", &pat.gender);
+                    scanf(" %c", &newPatient.gender);
                 }
                 printf("Enter Issue/ Complaint: ");
-                scanf(" %[^\n]", pat.issue);
+                scanf(" %[^\n]", newPatient.issue);
                 printf("Enter Priority {1,2,3}: ");
-                scanf(" %d", &pat.priority);
-                valid = verify(pat);
+                scanf(" %d", &newPatient.priority);
+                valid = validatePatient(newPatient);
             }
         }else{
                 printf("Enter Firstname and Surname: ");
-                scanf("%s %s", pat.firstname, pat.lastname);
+                scanf("%s %s", newPatient.firstname, newPatient.lastname);
                 printf("Enter Date of Birth (DD MM YYYY): ");
-                while((scanf("%d %d %d", &pat.dob.day, &pat.dob.month, &pat.dob.year )!= 3)){
+                while((scanf("%d %d %d", &newPatient.dob.day, &newPatient.dob.month, &newPatient.dob.year )!= 3)){
                         printf(RED"Invalid input!" RESET "Please Enter numeric digits: ");
                         while(getchar() != '\n');
                         }
                 printf("Enter Gender(M/F): ");
-                scanf(" %c", &pat.gender);
+                scanf(" %c", &newPatient.gender);
                 printf("Enter Issue/ Complaint: ");
-                scanf(" %[^\n]", pat.issue);
+                scanf(" %[^\n]", newPatient.issue);
                 printf("Enter Priority {1,2,3}: ");
-                scanf(" %d", &pat.priority);
-                valid = verify(pat);
+                scanf(" %d", &newPatient.priority);
+                valid = validatePatient(newPatient);
         }
 
 
@@ -321,14 +318,15 @@ patient registerpatient(Node *start){
                     printf(RED"Please Enter  the letter M/m/F/f for gender"RESET);
                     break;
                 }
-            }while(valid != 0);
-            pat.ticketnum = 0;
-            return pat;
 
+            }while(valid != 0);
+            newPatient.ticketnum = 0;
+            return newPatient;
 }
 
-Node* removepatient(Node *start, int ticketnumber){
-    patient pat;
+
+Node* dequeuePatient(Node *start, int ticketnumber){
+    Patient newPatient;
     if(start == NULL){
         printf(RED"the queue is empty\n"RESET);
         return NULL;
@@ -346,7 +344,7 @@ Node* removepatient(Node *start, int ticketnumber){
         printf(RED"ticketnum #%d not found"RESET, ticketnumber);
         return start;
     }
-    pat = current->data;
+    newPatient = current->data;
 
     if(prev == NULL){
         start = current->next;
@@ -357,9 +355,9 @@ Node* removepatient(Node *start, int ticketnumber){
     free(current);
 
     printf(GRN"ticketnumber: %d | %s %s"RESET,
-          pat.ticketnum,
-          pat.firstname,
-          pat.lastname
+          newPatient.ticketnum,
+          newPatient.firstname,
+          newPatient.lastname
           );
           printf("\n");
           printf("\n");
@@ -369,7 +367,7 @@ Node* removepatient(Node *start, int ticketnumber){
 
 void editqueue(Node *start, int id){
 
-    patient pat;
+    Patient newPatient;
     if(start == NULL){
         printf(RED"the queue is empty\n"RESET);
     }else{
@@ -382,7 +380,7 @@ void editqueue(Node *start, int id){
             printf(RED"id #%d not found"RESET, id);
         }else{
             current->data.id = 0;
-            patient pat = registerpatient(start);
+            Patient pat = registerpatient(start);
             pat.ticketnum = current->data.ticketnum;
             current->data = pat;
             printf(GRN"record edited successfully\n"RESET);

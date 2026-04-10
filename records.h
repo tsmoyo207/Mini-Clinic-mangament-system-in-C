@@ -3,9 +3,9 @@
 #include "patient.h"
 #include "observations.h"
 
-void savehistory(patoutcome patout);
+void appendConsultationRecord(ConsulatationRecord record);
 void viewhistory(int num);
-void statistics(Node *start, observ_arr arr);
+void statistics(Node *start, Ward ward);
 char* duration(double seconds);
 
 

@@ -6,8 +6,8 @@
 #include "observations.h"
 
 void pause();
-int verify(patient pat);
-void printmenu(observ_arr arr, Node *start, patient currentPatientInRoom);
+int validatePatient(Patient pat);
+void printmenu(Ward ward, Node *start, Patient currentPatientInRoom);
 void freequeue(Node *start);
 int age(date birth);
 

@@ -5,22 +5,22 @@
 #include "constants.h"
 
 typedef struct{
-    patient info;
+    Patient info;
     time_t date;
     char diagnosis[200];
     int occupied;
 
-}observ;
+}HospitalBed;
 
 typedef struct{
-    observ beds[maxbeds];
-}observ_arr;
+    HospitalBed beds[maxbeds];
+}Ward;
 
-observ_arr loadobservations();
-void viewobservations(observ_arr arr);
-observ_arr placeobservation(Node *tempo, observ_arr arr, char diagnosis[200]);
-observ_arr dischargepatient(observ_arr arr);
-void saveobservations(observ_arr arr);
-int bedsoccupied(observ_arr arr);
+Ward loadobservations();
+void viewobservations(Ward ward);
+Ward admitToBed(Node *tempo, Ward ward, char diagnosis[200]);
+Ward dischargepatient(Ward ward, int bednumber);
+void saveobservations(Ward ward);
+int bedsoccupied(Ward ward);
 
 #endif // OBSERVATIONS_H_INCLUDED

@@ -17,10 +17,10 @@ void pause() {
     system("cls");
 }
 
-int verify(patient pat){
+int validatePatient(Patient pat){
     int i,j;
 
-    if (pat.dob.day < 0 || pat.dob.day > 31){
+    if (pat.dob.day < 1 || pat.dob.day > 31){
         return 1;
     }
     if (pat.dob.month < 1 || pat.dob.month > 12 ){
@@ -53,14 +53,14 @@ int verify(patient pat){
     return 0;
 }
 
-void printmenu(observ_arr arr, Node* start, patient currentPatientInRoom){
+void printmenu(Ward ward, Node* start, Patient currentPatientInRoom){
     int x = queuelength(start);
-    int y = bedsoccupied(arr);
+    int y = bedsoccupied(ward);
 
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     printf("     |                  HOSPITAL MANAGEMENT SYSTEM V1.0                        |\n" );
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
-    printf("     |                    QUEUE: "CYAN"%-3d "RESET "patients Beds: "CYAN"%-2d/%-2d "RESET"                     |\n", x, y, maxbeds);
+    printf("     |                    QUEUE: "CYAN"%-3d "RESET "Patients Beds: "CYAN"%-2d/%-2d "RESET"                     |\n", x, y, maxbeds);
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     if (currentPatientInRoom.ticketnum == 0){
         printf("     |                  Doctor Is Not Seeing Anyone at the moment              |\n");
@@ -80,7 +80,7 @@ void printmenu(observ_arr arr, Node* start, patient currentPatientInRoom){
     printf("     "CYAN" [5]"RESET" Call the Next Patient to see the Doctor.\n");
     printf("     "CYAN" [6]"RESET" View Observation Ward.\n");
     printf("     "CYAN" [7]"RESET" Discharge Patient from Observation Ward.\n");
-    printf("     "CYAN" [8]"RESET" Search History or View All patient History Records.\n");
+    printf("     "CYAN" [8]"RESET" Search History or View All Patient History Records.\n");
     printf("     "CYAN" [9]"RESET" View Hospital Statistics.\n");
     printf("     "CYAN" [0]"RESET" Save and Exit.\n");
 
