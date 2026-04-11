@@ -28,10 +28,10 @@ Ward loadobservations(){
         strcpy(ward.beds[i].diagnosis, "0");
     }
     if (!f) {
-        printf(RED "Error opening oberservations file\n" RESET);
+        printf(RED "Warning: Could not open observations file. Starting with an empty Ward.\n" RESET);
     }else{
         for(int i = 0; i<maxbeds; i++){
-            int items = fscanf(f, " %d , %99[^,] , %99[^,\n\r] , %d , %d , %d , %d , %c , %99[^,] , %99[^,] , %ld",
+            int items = fscanf(f, " %d , %99[^,] , %99[^,\n\r] , %lld , %d , %d , %d , %c , %99[^,] , %99[^,] , %ld",
                    &ward.beds[i].occupied,
                    ward.beds[i].info.firstname,
                    ward.beds[i].info.lastname,
@@ -51,9 +51,9 @@ Ward loadobservations(){
             }
 
             }
-
+            printf(GRN "       Observation Ward restored from last session.\n" RESET);
+            fclose(f);
     }
-    fclose(f);
     return ward;
 }
 
@@ -63,8 +63,8 @@ Ward loadobservations(){
 */
 
 void viewobservations(Ward ward){
-    printf(GRN_BR_UND"                                                                                                                       \n"RESET);
-    printf(GRN_BR_UND"Bed | # | Firstname    | Surname      | ID       | D.O.B      | Sex |  Date of Admission       |      Diagnosis       |\n"RESET);
+    printf(GRN_BR_UND"                                                                                                                                          \n"RESET);
+    printf(GRN_BR_UND"Bed | # | Firstname    | Surname      | ID                 | D.O.B      | Sex |  Date of Admission       |      Diagnosis                |\n"RESET);
     for(int i = 0; i<maxbeds; i++){
         if(ward.beds[i].occupied == 0){
             printf(YEL"Bed |%-2d "RESET"| "RED_BR"EMPTY     "RESET"   |      -       |    -     |      -     |  -  |            -             |          -           \n", i+1);
@@ -72,7 +72,7 @@ void viewobservations(Ward ward){
             // Convert the numeric timestamp (time_t) into human readable string
             char *horloge =    ctime(&ward.beds[i].date);
             horloge[24] = '\0'; // Remove the default newline character added by ctime
-            printf(YEL"Bed |%-2d"RESET" | %-12s |"BR_YEL" %-12s "RESET"|%-8d  |"BR_YEL" %-2d/%-2d/%d "RESET"|  %c  |"BR_YEL" %-23s "RESET "| %s\n",
+            printf(YEL"Bed |%-2d"RESET" | %-12s |"BR_YEL" %-12s "RESET"|%-18lld  |"BR_YEL" %-2d/%-2d/%d "RESET"|  %c  |"BR_YEL" %-23s "RESET "| %s\n",
                    i+1,
                    ward.beds[i].info.firstname,
                    ward.beds[i].info.lastname,
@@ -100,7 +100,8 @@ Ward admitToBed(Node *tempo, Ward ward, char diagnosis[200]){
         i++;
     }
     if(i>=maxbeds){
-        printf(RED"Observation Ward at Maximum Capicity\n"RESET);
+       printf(RED "Observation Ward is at full capacity (%d/%d beds occupied)\n "
+                  "Please discharge a patient before admitting a new one.\n" RESET, maxbeds, maxbeds);
     }else{
         // Transfers data from a queue to the ward array.
         ward.beds[i].info.dob.day = tempo->data.dob.day;
@@ -127,10 +128,10 @@ Ward admitToBed(Node *tempo, Ward ward, char diagnosis[200]){
 void saveobservations(Ward ward){
  FILE* f = fopen("patientobservations.csv", "w");
     if (!f) {
-        printf(RED "Error opening oberservations file\n" RESET);
+        printf(RED "Error Saving Observations to file"RESET);
     }else{
         for(int i = 0; i<maxbeds; i++){
-            fprintf(f, "%d, %s, %s, %d, %d, %d, %d, %c, %s, %s, %ld\n",
+            fprintf(f, "%d, %s, %s, %lld, %d, %d, %d, %c, %s, %s, %ld\n",
                    ward.beds[i].occupied,
                    ward.beds[i].info.firstname,
                    ward.beds[i].info.lastname,
@@ -147,6 +148,7 @@ void saveobservations(Ward ward){
             }
     }
     fclose(f);
+    printf(GRN "Observation Ward saved successfully.\n" RESET);
 }
 
 /**
@@ -185,10 +187,11 @@ Ward dischargepatient(Ward ward, int bednumber){
     }
 
     if(ward.beds[bednumber-1].occupied == 0){
-        printf(RED"This bed is already empty\n"RESET);
+        printf(RED"Bed %d is already vacant. No action taken.\n"RESET);
     }else{
         ward.beds[bednumber-1].occupied = 0;
-        printf(GRN"%s %s has been discharged successfully\n"RESET,
+        printf(GRN"Bed %d: %s %s has been successfully discharged\n"RESET,
+                bednumber,
                 ward.beds[bednumber-1].info.firstname,
                 ward.beds[bednumber-1].info.lastname
                 );

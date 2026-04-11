@@ -13,8 +13,9 @@ int main(){
     currentPatientInRoom.ticketnum = 0;
     Node *start = loadqueue();
     pat.ticketnum = 0;
-    int bednumber, menuchoice,ticketnumber, id;
+    int bednumber, menuchoice,ticketnumber, ticket;
     Ward ward = loadobservations();
+    char opt;
     bool loop = true;
 
     do{
@@ -38,12 +39,12 @@ int main(){
            pause();
            break;
         case 3:
-            printf("Enter the Patient's id: ");
-            while((scanf("%d", &id))!= 1){//Makes Sure user enters a number
+            printf("Enter the Patient's Ticket Number: ");
+            while((scanf("%d", &ticket))!= 1){//Makes Sure user enters a number
                 printf(RED"Invalid input!" RESET " Please Enter a number: ");
                 while(getchar() != '\n');
             }
-            editqueue(start, id);
+            editqueue(start, ticket);
             pause();
             break;
         case 4:
@@ -57,36 +58,64 @@ int main(){
             break;
         case 5:
             if (start == NULL){
-                printf("No patients waiting\n");
+                printf("The waiting queue is empty. No patients to call.\n");
             }else{
 
                 if (currentPatientInRoom.ticketnum == 0){//This means No one is seeing the Doctor at the moment
-                    printf("Next Patient:"GRN" %s %s "RESET"          Ticket number:"RED_BR" %d\n"RESET,
+                    char priority[8];
+                    if(start->data.priority == 1){
+                        strcpy(priority, "LOW");
+                    }else{
+                        if(start->data.priority == 2){
+                        strcpy(priority, "MEDIUM");
+                        }else{
+                            strcpy(priority, "HIGH");
+                        }
+                    }
+                    printf("Calling to Consultation Room: "GRN"%s %s "RESET"|  Ticket: "YEL" %d "RESET" |  Priority: "YEL" %s"RESET,
                         start->data.firstname,
                         start->data.lastname,
-                        start->data.ticketnum
+                        start->data.ticketnum,
+                        priority
                          );
                     currentPatientInRoom = start->data;
                 }else{
 
                     Node *temp = start;
                     start = start->next;
+
                     if(start == NULL){
                          printf("No patients waiting\n");
                     }else{
-                        printf("Next Patient:"GRN" %s %s "RESET"           Ticket number:"RED_BR" %d\n"RESET,
-                            start->data.firstname,
-                            start->data.lastname,
-                            start->data.ticketnum
-                             );
+                        char priority[8];
+                        if(start->data.priority == 1){
+                            strcpy(priority, "LOW");
+                        }else{
+                            if(start->data.priority == 2){
+                            strcpy(priority, "MEDIUM");
+                            }else{
+                                strcpy(priority, "HIGH");
+                            }
+                        }
+                       printf("Calling to Consultation Room: "GRN"%s %s "RESET"|  Ticket: "YEL" %d "RESET" |  Priority: "YEL" %s"RESET,
+                        start->data.firstname,
+                        start->data.lastname,
+                        start->data.ticketnum,
+                        priority
+                         );
                     }
-                    free(temp);
+
                     ConsulatationRecord record;
                     record.admissiondate = 0;
                     record.data = currentPatientInRoom;
 
                     printf("\n");
-                    printf("What was the Doctors Diagnosis for %s %s: ", currentPatientInRoom.firstname, currentPatientInRoom.lastname);
+                    printf(GRN"--- Closing consultation for %s %s (Ticket: %d) ---\n"RESET,
+                        currentPatientInRoom.firstname,
+                        currentPatientInRoom.lastname,
+                        currentPatientInRoom.ticketnum);
+
+                    printf("Enter Doctor's Diagnosis for %s %s: ", currentPatientInRoom.firstname, currentPatientInRoom.lastname);
                     if(start == NULL){
                          currentPatientInRoom.ticketnum = 0;
                     }else{
@@ -95,9 +124,89 @@ int main(){
                     scanf(" %[^\n]", record.diagnosis);
                     printf("\n");
                     do{
-                        printf(CYAN"     CONSULTATION RESULT SUB MENU\n"RESET);
+                        printf(CYAN"     -----CONSULTATION OUTCOME-----\n"RESET);
                         printf(CYAN"     [1]"RESET" Discharge with prescription\n");
-                        printf(CYAN"     [2]"RESET" Place Under Observarion\n");
+                        printf(CYAN"     [2]"RESET" Admit to observation Ward\n");
+                        printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
+                        printf(BB_WHITE"     select an option: ");
+                        while((scanf("%d", &record.outcome))!= 1){
+                        printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                        while(getchar() != '\n');
+                        }
+                        printf("\n");
+                        printf("\n");
+
+                        switch(record.outcome){
+                            case 1:
+                                printf("Enter the Prescription given: ");
+                                scanf(" %[^\n]", record.treatment);
+                                appendConsultationRecord(record);
+                                break;
+                            case 2:
+                                ward = admitToBed(temp, ward, record.diagnosis);
+                                break;
+                            case 3:
+                                printf("Enter Name of Department  referred to: ");
+                                scanf(" %[^\n]", record.treatment);
+                                appendConsultationRecord(record);
+                                break;
+                            default:
+                                printf(RED"Invalid option!"RESET " Please enter a number between 1 and 3");
+                                printf("\n");
+                                printf("\n");
+                                break;
+                        }
+                    }while(record.outcome != 3 && record.outcome != 2 && record.outcome != 1);
+                    free(temp);
+                }
+
+                pause();
+            }
+            break;
+        case 6:
+                viewobservations(ward);
+                pause();
+                break;
+        case 7:
+                printf("Enter Bed Number to Discharge Patient: ");
+                while((scanf("%d", &bednumber))!= 1){
+                    printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                    while(getchar() != '\n');
+                }
+                printf("Did the patient pass away? (Y/n)");
+                scanf(" %c", &opt);
+                if (opt == 'Y' || opt == 'y'){
+                    bednumber = bednumber * -1;
+                }
+                ward = dischargepatient(ward, bednumber);
+                break;
+        case 8:
+                int num;
+                printf("Enter Specific ID to search for record or 0 to show all records: ");
+                while((scanf("%d", &num))!= 1){
+                    printf(RED"Invalid input!" RESET " Please Enter a number: ");
+                    while(getchar() != '\n');
+                }
+                viewhistory(num);
+                pause();
+                break;
+        case 9:
+                statistics(start, ward);
+                pause();
+                break;
+        case 0:
+                if(currentPatientInRoom.ticketnum != 0){
+                    ConsulatationRecord record;
+                    record.admissiondate = 0;
+                    record.data = currentPatientInRoom;
+                    printf("Enter The Consulation details of the patient in the consulation Room to exit\n");
+                    printf("Enter Doctor's Diagnosis for %s %s: ", currentPatientInRoom.firstname, currentPatientInRoom.lastname);
+                    scanf(" %[^\n]", record.diagnosis);
+                    printf("\n");
+                    do{
+                        printf(CYAN"     -----CONSULTATION OUTCOME-----\n"RESET);
+                        printf(CYAN"     [1]"RESET" Discharge with prescription\n");
+                        printf(CYAN"     [2]"RESET" Admit to observation Ward\n");
                         printf(CYAN"     [3]"RESET" Refer to Another Depatment\n");
                         printf(BB_WHITE"     select an option: ");
                         while((scanf("%d", &record.outcome))!= 1){
@@ -117,7 +226,7 @@ int main(){
                                 ward = admitToBed(start, ward, record.diagnosis);
                                 break;
                             case 3:
-                                printf("Enter Name of Department  reffered to: ");
+                                printf("Enter Name of Department  referred to: ");
                                 scanf(" %[^\n]", record.treatment);
                                 appendConsultationRecord(record);
                                 break;
@@ -129,38 +238,7 @@ int main(){
                         }
                     }while(record.outcome != 3 && record.outcome != 2 && record.outcome != 1);
                 }
-                pause();
-            }
-            break;
-        case 6:
-                viewobservations(ward);
-                pause();
-                break;
-        case 7:
-                printf("Enter Bed Number to Discharge. If Patient Died, Enter Negative number: ");
-                while((scanf("%d", &bednumber))!= 1){
-                    printf(RED"Invalid input!" RESET " Please Enter a number: ");
-                    while(getchar() != '\n');
-                }
-                ward = dischargepatient(ward, bednumber);
-                break;
-        case 8:
-                int num;
-                printf("Enter Specific ID to search for record or 0 to show all records: ");
-                while((scanf("%d", &num))!= 1){
-                    printf(RED"Invalid input!" RESET " Please Enter a number: ");
-                    while(getchar() != '\n');
-                }
-                viewhistory(num);
-                pause();
-                break;
-        case 9:
-                statistics(start, ward);
-                pause();
-                break;
-        case 0:
-                printf("System Shutting Down.............");
-
+                printf("Saving data and shutting down. Goodbye.\n");
                 savequeue(start);
                 saveobservations(ward);
                 freequeue(start);

@@ -20,7 +20,7 @@ void appendConsultationRecord(ConsulatationRecord record){
     }else{
         char outcome[50];
         record.releasedate = time(NULL);// This save the time at which the record is saved.
-        fprintf(f, "%s, %s, %d, %d, %d, %d, %c, \"%s\", %d ,\"%s\", %ld, %ld\n",
+        fprintf(f, "%s, %s, %lld, %d, %d, %d, %c, \"%s\", %d ,\"%s\", %ld, %ld\n",
                 record.data.firstname,
                 record.data.lastname,
                 record.data.id,
@@ -37,6 +37,10 @@ void appendConsultationRecord(ConsulatationRecord record){
                 );
     }
     fclose(f);
+    printf(GRN "Record saved for %s %s.\n" RESET,
+                        record.data.firstname,
+                        record.data.lastname);
+
 }
 
 /**
@@ -44,14 +48,16 @@ void appendConsultationRecord(ConsulatationRecord record){
 * Allows to search for a patient using their id or enter a default option to view all patients.
 */
 
-void viewhistory(int searchID){
+void viewhistory(long long searchID){
     FILE* f = fopen("patienthistory.csv", "r");
-    int id, day, month, year;
+    int day, month, year;
+    long long id;
     char gender;
     bool notPrintedYet = true, found = false;
     char firstname[100], lastname[100], diagnosis[100], treatment[100];
     int outcome;
     time_t releasedate, admissiondate;
+    char *releaseDate, *admissionDate;
 
 
 
@@ -60,7 +66,7 @@ void viewhistory(int searchID){
         printf(RED"Error opening file\n"RESET);
     }else{
          if (searchID==0){
-               while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+               while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
                       firstname,
                       lastname,
                       &id,
@@ -76,38 +82,38 @@ void viewhistory(int searchID){
         if(notPrintedYet){
             printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
         }
-        char *releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings.
+        releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings.
         releaseDate[24] = '\0';// Removes default new line added by ctime.
 
         if(outcome == 2){
-            char *admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings.
+            admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings.
             admissionDate[24] = '\0';// Removes default new line added by ctime.
 
             double observationDuration = difftime(releasedate, admissiondate);//Calculates the length between 2 timestamps
             char *observed = duration(observationDuration);//Converts difftime into human readable string
 
             printf("--------------------------------------------------------------------------------------------------------------------\n");
-            printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-6d                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+            printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-18lld                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
             printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis );
             printf(MGT"     Outcome:"RESET" Placed Under Observation for %s\n", observed );
             printf(MGT"     Date of Admission:"RESET" %s "MGT"        Date of Release: "RESET"%s\n", admissionDate, releaseDate );
             }else{
                 if(outcome == 1){
                     printf("--------------------------------------------------------------------------------------------------------------------\n");
-                    printf(MGT"     Full Name: "RESET"%-12s %-12s            "MGT"  ID:"RESET" %-6d             "MGT"  DOB:"RESET" %d/%d/%d\n", firstname, lastname, id, day, month, year);
+                    printf(MGT"     Full Name: "RESET"%-12s %-12s            "MGT"  ID:"RESET" %-18lld             "MGT"  DOB:"RESET" %d/%d/%d\n", firstname, lastname, id, day, month, year);
                     printf(MGT"     Diagnosis:"RESET" %s\n",diagnosis);
                     printf(MGT"     Outcome:"RESET"   Discharged with the following prescription: %s\n", treatment);
                     printf(MGT"     Date of Consulation:"RESET" %s\n", releaseDate);
                     }else{
                         if(outcome == 3){
                         printf("--------------------------------------------------------------------------------------------------------------------\n");
-                        printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                        printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-18lld               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
                         printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
                         printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
                         printf(MGT"     Date of Consulation:"RESET" %s\n", releaseDate);
                         }else{
                             printf("--------------------------------------------------------------------------------------------------------------------\n");
-                            printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                            printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-18lld               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
                             printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
                             printf(MGT"     Outcome:"RESET"   Died Under Observation\n");
                             printf(MGT"     Date of Death:"RESET" %s\n", releaseDate);
@@ -117,12 +123,13 @@ void viewhistory(int searchID){
                 }
 
             }
-            notPrintedYet = false;
+             notPrintedYet = false;
+
              if(notPrintedYet){
-                printf(RED"No history Recorded"RESET);
+                printf(RED"No patient history records exist yet.\n"RESET);
             }
         }else{
-            while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+            while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
                       firstname,
                       lastname,
                       &id,
@@ -141,7 +148,7 @@ void viewhistory(int searchID){
                                 printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
                           }
 
-                        char *releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings
+                        releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings
                         releaseDate[24] = '\0';// Removes default new line added by ctime.
 
 
@@ -152,7 +159,7 @@ void viewhistory(int searchID){
                             char *observed = duration(observationDuration);//Converts difftime into human readable string
 
                             printf("--------------------------------------------------------------------------------------------------------------------\n");
-                            printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-6d                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                            printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-18lld                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
                             printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis );
                             printf(MGT"     Outcome:"RESET" Placed Under Observation for %s\n", observed );
                             printf(MGT"     Date of Admission:"RESET" %s "MGT"        Date of Release: "RESET"%s\n", admissionDate, releaseDate );
@@ -161,13 +168,13 @@ void viewhistory(int searchID){
                             }else{
                                 if(outcome == 1){
                                     printf("--------------------------------------------------------------------------------------------------------------------\n");
-                                    printf(MGT"     Full Name: "RESET"%-12s %-12s            "MGT"  ID:"RESET" %-6d             "MGT"  DOB:"RESET" %d/%d/%d\n", firstname, lastname, id, day, month, year);
+                                    printf(MGT"     Full Name: "RESET"%-12s %-12s            "MGT"  ID:"RESET" %-18lld             "MGT"  DOB:"RESET" %d/%d/%d\n", firstname, lastname, id, day, month, year);
                                     printf(MGT"     Diagnosis:"RESET" %s\n",diagnosis);
                                     printf(MGT"     Outcome:"RESET"   Discharged with the following prescription: %s\n", treatment);
                                     printf(MGT"     Date of Consulation:"RESET" %s\n", releaseDate);
                                 }else{
                                     printf("--------------------------------------------------------------------------------------------------------------------\n");
-                                    printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-6d               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
+                                    printf(MGT"     Full Name:"RESET" %-12s %-12s              "MGT"ID:"RESET" %-18lld               "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
                                     printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis);
                                     printf(MGT"     Outcome:"RESET"   Referred to %s\n", treatment);
                                     printf(MGT"     Date of Consulation:"RESET" %s\n", releaseDate);
@@ -179,8 +186,10 @@ void viewhistory(int searchID){
                     }
                     if (!found){
                         // Validate if the Id is in the record or not
-                        printf(RED"Record not found\n"RESET);
+                        printf(RED"No history records found for ID %lld.\n"RESET, searchID);
                     }
+                    free(releaseDate);
+                    free(admissionDate);
             }
     }
 }
@@ -190,7 +199,8 @@ void viewhistory(int searchID){
 */
 void statistics(Node *start, Ward ward){
     FILE* f = fopen("patienthistory.csv", "r");
-    int id, day, month, year;
+    int day, month, year;
+    long long id;
     char gender;
     bool empty = true, found = false;
     char firstname[100], lastname[100], diagnosis[100], treatment[100];
@@ -213,7 +223,7 @@ void statistics(Node *start, Ward ward){
         //Validates if its a file or not.
         printf(RED"Error opening file\n"RESET);
     }else{
-        while((fscanf(f, " %99[^,] , %99[^,] , %d , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+        while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
                 firstname,
                 lastname,
                 &id,
@@ -336,24 +346,24 @@ char *duration(double observationDuration){
 
     char *result = malloc(70*sizeof(char));
     if (observationDuration < 60){
-        sprintf(result, "%d observationDuration", (int)observationDuration);
+        sprintf(result, "%d seconds", (int)observationDuration);
         }else{
             if(observationDuration < 3600){
                 int totalMinutes = observationDuration/60;
                 int remainSeconds =  observationDuration - totalMinutes*60;
-                sprintf(result, "%d minutes and %d observationDuration", totalMinutes, remainSeconds);
+                sprintf(result, "%d minutes and %d seconds", totalMinutes, remainSeconds);
                 }else{
                     if(observationDuration < 86400){
                         int totalHours = observationDuration/3600;
                         int remainMinutes  = (observationDuration - totalHours*3600)/60;
                         int totalMinutes = (observationDuration - totalHours*3600) - remainMinutes *60;
-                        sprintf(result, "%d hours %d minutes and %d observationDuration",totalHours, remainMinutes , totalMinutes);
+                        sprintf(result, "%d hours %d minutes and %d seconds",totalHours, remainMinutes , totalMinutes);
                     }else{
-                        int remainSeconds = observationDuration/86400;
-                        int totalHours = (observationDuration - remainSeconds*86400)/3600;
-                        int totalDays = ((observationDuration - remainSeconds*86400) - totalHours*3600)/60;
-                        int remainMinutes  = ((observationDuration - remainSeconds*86400) - totalHours*3600) - totalDays*60;
-                        sprintf(result, "%d days %d hours %d minutes and %d observationDuration",remainSeconds, totalHours, totalDays, remainMinutes );
+                        int totalDays = observationDuration/86400;
+                        int totalHours = (observationDuration - totalDays*86400)/3600;
+                        int remainMinutes= ((observationDuration - totalDays*86400) - totalHours*3600)/60;
+                        int remainSeconds = ((observationDuration - totalDays*86400) - totalHours*3600) - remainMinutes*60;
+                        sprintf(result, "%d days %d hours %d minutes and %d seconds", totalDays, totalHours, remainMinutes, remainSeconds );
                     }
                 }
         }
