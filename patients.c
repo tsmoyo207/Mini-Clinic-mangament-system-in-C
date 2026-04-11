@@ -6,7 +6,7 @@
 #include "utility.h"
 
 
-/**This Procedure displayes the queue in a tabular format changing colours according to priority
+/**This Procedure displays the queue in a tabular format changing colours according to priority
 */
 
 void viewqueue(Node *temp){
@@ -269,7 +269,7 @@ Patient registerpatient(Node *start){
             printf("We Found a records with the same ID under the name "CYAN"%s %s.\n"RESET, cachedRecord.firstname, cachedRecord.lastname);
             printf("Is the Patient back for a review? (Y/n): ");
             scanf(" %c", &option1);
-        ```//Autofill user information for all deatials and set priority to 1.
+            //Autofill user information for all deatials and set priority to 1.
             if (option1 == 'Y' || option1 == 'y'){
                     newPatient = cachedRecord;
                     newPatient.priority = 1;
