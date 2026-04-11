@@ -1,148 +1,100 @@
-Carlos, Hassan, 750056, 16, 8, 1955, F, "Migraine with aura", 3, "ENT", 1763139623, 0
-Amelia, Thomas, 637338, 18, 8, 1974, M, "Acute appendicitis", 1, "Metoclopramide 10mg three times daily", 1772614177, 0
-Fatima, Brown, 417758, 13, 3, 1989, M, "Viral fever", 1, "Tramadol 50mg every 6 hours as needed", 1770150698, 0
-Tariq, Khalil, 144109, 10, 10, 1957, F, "Febrile seizure", 2, "Medical Observation", 1764617802, 1764358750
-Isabella, Martin, 585394, 25, 1, 1975, F, "Vasovagal syncope", 1, "Omeprazole 20mg once daily before meals", 1764755476, 0
-Munashe, Lopez, 847010, 20, 6, 1958, F, "Type 2 diabetes complication", 1, "Amlodipine 5mg once daily", 1765802569, 0
-Sophie, Banda, 934198, 5, 3, 1984, F, "Cystitis", 2, "Medical Observation", 1766362021, 1766307992
-Rudo, Zvobgo, 556390, 2, 7, 2005, M, "Viral fever", 1, "Tramadol 50mg every 6 hours as needed", 1770375277, 0
-Layla, Rahman, 590719, 14, 3, 1989, M, "Community acquired pneumonia", 2, "Medical Observation", 1772006725, 1771952117
-Munashe, Mwale, 531869, 3, 3, 2002, F, "Cellulitis", 1, "Omeprazole 20mg once daily before meals", 1766233388, 0
-Sofia, Banda, 109820, 19, 9, 1953, F, "Upper respiratory infection", 2, "Medical Observation", 1760114025, 1759978921
-Tafara, Ramirez, 604923, 12, 5, 1977, M, "Acute asthma exacerbation", 2, "Medical Observation", 1767405217, 1767227872
-Olivia, Torres, 982515, 16, 9, 1972, F, "Salmonella gastroenteritis", 1, "Cetirizine 10mg once daily at night", 1770756641, 0
-Claire, Garcia, 998325, 28, 11, 1989, M, "Second degree burns", 1, "Metformin 500mg twice daily with meals", 1762893543, 0
-Chiedza, Makoni, 316444, 17, 5, 1991, F, "Supraventricular tachycardia", 1, "Hydrocortisone cream apply twice daily", 1764104670, 0
-Carlos, Moyo, 631633, 17, 11, 2005, F, "Acute appendicitis", 2, "Medical Observation", 1772724571, 1772545622
-Amina, Simon, 503932, 15, 6, 2004, M, "Second degree burns", 1, "Amoxicillin 500mg three times daily for 7 days", 1765399900, 0
-Logan, Garcia, 316560, 14, 8, 1955, M, "Radius fracture", 3, "Neurology", 1762819128, 0
-Takudzwa, Williams, 983661, 20, 8, 1989, F, "Upper respiratory infection", 1, "Paracetamol 500mg twice daily for 5 days", 1772626770, 0
-Tatenda, Traore, 936352, 23, 8, 2003, F, "Contact dermatitis", 1, "Hydrocortisone cream apply twice daily", 1758719099, 0
-Jean, Hassan, 841160, 20, 3, 1951, F, "Viral fever", 3, "Gastroenterology", 1765909108, 0
-Nyasha, Garcia, 348253, 19, 5, 1968, F, "Pulmonary embolism", 3, "Nephrology", 1768664016, 0
-Evelyn, Rahman, 110169, 18, 3, 1998, M, "Bacterial conjunctivitis", 2, "Medical Observation", 1764654226, 1764485702
-Abigail, Martinez, 689716, 17, 9, 1952, M, "Costochondritis", 1, "Amlodipine 5mg once daily", 1763176034, 0
-Miguel, Williams, 336414, 16, 10, 1994, M, "Acute gastritis", 2, "Medical Observation", 1772636248, 1772421147
-Marcel, Martin, 462946, 24, 1, 2000, M, "Lumbar strain", 1, "Diclofenac 50mg twice daily for 3 days", 1770553481, 0
-Isabella, Nkosi, 872543, 5, 6, 1987, F, "Laceration requiring sutures", 1, "Prednisolone 30mg once daily tapering over 5 days", 1773323369, 0
-Nyasha, Diallo, 804015, 19, 4, 1984, F, "Radius fracture", 1, "Omeprazole 20mg once daily before meals", 1767218005, 0
-Olivia, Garcia, 905545, 9, 12, 1989, M, "Febrile seizure", 2, "Medical Observation", 1769605260, 1769469176
-Carmen, Hernandez, 944312, 1, 12, 1982, F, "Radius fracture", 2, "Medical Observation", 1760657889, 1760524338
-Jean, Hassan, 116936, 3, 9, 1964, F, "Tension headache", 1, "Paracetamol 500mg twice daily for 5 days", 1771680753, 0
-Amelia, Zulu, 698166, 21, 2, 1966, F, "Salmonella gastroenteritis", 1, "Azithromycin 500mg once daily for 3 days", 1762777717, 0
-Omar, Khalil, 836493, 22, 6, 1995, M, "Migraine with aura", 3, "Orthopedics", 1763264261, 0
-Liam, Torres, 170693, 4, 3, 1962, M, "Pulmonary embolism", 2, "Medical Observation", 1770269007, 1770067909
-Jackson, Brown, 192676, 25, 2, 1975, F, "Acute asthma exacerbation", 1, "Cetirizine 10mg once daily at night", 1760745973, 0
-Nadia, Mutasa, 100284, 19, 11, 1979, M, "Acute gastritis", 1, "Ciprofloxacin 500mg twice daily for 5 days", 1764476539, 0
-Elena, Michel, 603799, 14, 9, 1997, M, "Type 2 diabetes complication", 1, "Paracetamol 500mg twice daily for 5 days", 1771152782, 0
-Nadia, Sanchez, 336230, 21, 3, 1999, F, "Pleuritis", 1, "Ibuprofen 400mg three times daily with food", 1768884583, 0
-Tafara, Petit, 767448, 16, 12, 1987, M, "Benign positional vertigo", 1, "Metoclopramide 10mg three times daily", 1770585510, 0
-Jackson, Ibrahim, 558004, 26, 8, 1977, M, "Migraine with aura", 1, "Hydrocortisone cream apply twice daily", 1766073765, 0
-Abigail, Perez, 559843, 6, 1, 2002, M, "Lateral ankle sprain", 2, "Medical Observation", 1769281866, 1769112243
-Louis, Diallo, 943272, 5, 10, 2003, M, "Costochondritis", 2, "Medical Observation", 1764593258, 1764440402
-Harper, Petit, 739374, 23, 12, 1985, F, "Upper respiratory infection", 2, "Medical Observation", 1766483405, 1766478758
-Aiden, Michel, 891374, 16, 9, 1971, F, "Type 2 diabetes complication", 2, "Medical Observation", 1769467409, 1769439926
-Louis, Traore, 896275, 10, 10, 2000, F, "Migraine with aura", 2, "Medical Observation", 1763787796, 1763768757
-Isabella, Lopez, 736969, 12, 3, 1988, F, "Cellulitis", 3, "Pulmonology", 1766963645, 0
-Rosa, Ibrahim, 751701, 7, 7, 1976, F, "Lateral ankle sprain", 2, "Medical Observation", 1765323889, 1765169505
-Yusuf, Okafor, 605008, 26, 5, 2004, M, "Costochondritis", 2, "Medical Observation", 1768501103, 1768288631
-Lucas, Mensah, 749334, 12, 6, 1974, F, "Bacterial conjunctivitis", 1, "Amoxicillin 500mg three times daily for 7 days", 1769665467, 0
-Amelia, Mwale, 679642, 16, 12, 1995, M, "Otitis media", 1, "Tramadol 50mg every 6 hours as needed", 1771100074, 0
-Tatenda, Gonzalez, 581351, 2, 2, 1959, F, "Lateral ankle sprain", 3, "Endocrinology", 1762861563, 0
-Amina, Dube, 152224, 19, 12, 1984, F, "Pulmonary embolism", 1, "Hydrocortisone cream apply twice daily", 1759196568, 0
-Marie, Laurent, 566697, 18, 10, 1978, F, "Deep vein thrombosis", 1, "Hydrocortisone cream apply twice daily", 1765435095, 0
-Luis, Phiri, 565815, 21, 10, 1992, M, "Febrile seizure", 2, "Medical Observation", 1773141588, 1773036857
-Amelia, Zulu, 940131, 10, 2, 1990, F, "Laceration requiring sutures", 1, "Hydrocortisone cream apply twice daily", 1769929854, 0
-Rosa, Laurent, 138622, 18, 2, 1993, M, "Contact dermatitis", 1, "Amoxicillin 500mg three times daily for 7 days", 1768291355, 0
-Fatima, Perez, 373943, 5, 8, 1990, M, "Cystitis", 2, "Medical Observation", 1765691057, 1765447880
-Rosa, Khalil, 970020, 7, 8, 1994, M, "Otitis media", 1, "Amlodipine 5mg once daily", 1768150860, 0
-Tinaye, Bernard, 857275, 23, 12, 1964, M, "Septic arthritis", 1, "Ibuprofen 400mg three times daily with food", 1765296734, 0
-Sophie, Khalil, 413098, 4, 7, 1978, F, "Vasovagal syncope", 2, "Medical Observation", 1767866176, 1767824359
-Isabelle, Banda, 596630, 12, 3, 1958, M, "Anaphylaxis", 1, "Amlodipine 5mg once daily", 1760207602, 0
-Olivia, Jones, 737027, 4, 3, 1999, F, "Febrile seizure", 2, "Medical Observation", 1759094647, 1758859776
-Jose, Traore, 211872, 5, 7, 2005, M, "Renal colic", 2, "Medical Observation", 1761827395, 1761823745
-Aiden, Jones, 601627, 3, 3, 1985, M, "Community acquired pneumonia", 2, "Medical Observation", 1769336335, 1769168675
-Henri, Robert, 308240, 6, 7, 2003, M, "Acute asthma exacerbation", 2, "Medical Observation", 1764959250, 1764770094
-Isabelle, Moore, 119313, 20, 6, 1985, F, "Lateral ankle sprain", 2, "Medical Observation", 1766704857, 1766507298
-Oliver, Petit, 738602, 15, 12, 1990, F, "Cellulitis", 2, "Medical Observation", 1773359428, 1773256672
-Lucas, Hernandez, 519583, 4, 2, 1985, M, "Lateral ankle sprain", 2, "Medical Observation", 1767232373, 1767187717
-Lucas, Laurent, 275020, 24, 12, 1983, F, "Upper respiratory infection", 1, "Metoclopramide 10mg three times daily", 1772865191, 0
-Pierre, Garcia, 235539, 1, 8, 1999, M, "Laceration requiring sutures", 2, "Medical Observation", 1758759122, 1758601969
-Rudo, Chirwa, 708024, 21, 1, 1963, M, "Acute asthma exacerbation", 2, "Medical Observation", 1771005637, 1770974989
-Tariq, Traore, 544051, 11, 2, 1990, M, "Lateral ankle sprain", 1, "Metoclopramide 10mg three times daily", 1768820197, 0
-Miguel, Mwale, 227158, 2, 9, 1970, F, "Anaphylaxis", 1, "Paracetamol 500mg twice daily for 5 days", 1761809129, 0
-Elena, Dubois, 438198, 1, 10, 1965, F, "Viral fever", 3, "Ophthalmology", 1763459755, 0
-Layla, Mensah, 238012, 15, 3, 2001, M, "Febrile seizure", 2, "Medical Observation", 1767545329, 1767382797
-Henri, Simon, 919588, 4, 1, 2001, M, "Otitis media", 2, "Medical Observation", 1770842830, 1770821156
-Jean, Richard, 616460, 16, 3, 1981, M, "Second degree burns", 1, "Amlodipine 5mg once daily", 1764610617, 0
-Isabella, Nkosi, 106520, 28, 11, 1984, F, "Bronchial asthma", 1, "Tramadol 50mg every 6 hours as needed", 1767187973, 0
-Ethan, Mwale, 300138, 4, 2, 1979, F, "Lateral ankle sprain", 2, "Medical Observation", 1767987518, 1767952138
-Ethan, Davis, 833048, 7, 4, 1993, M, "Viral fever", 1, "Prednisolone 30mg once daily tapering over 5 days", 1760070441, 0
-Louis, Rodriguez, 186268, 19, 7, 1961, F, "Salmonella gastroenteritis", 3, "Gastroenterology", 1760706960, 0
-Fatima, Banda, 295879, 28, 8, 1994, F, "Viral fever", 1, "Tramadol 50mg every 6 hours as needed", 1762675038, 0
-Sofia, Simon, 888258, 27, 1, 2000, F, "Benign positional vertigo", 1, "Ciprofloxacin 500mg twice daily for 5 days", 1761322478, 0
-Zara, Torres, 215337, 9, 8, 1966, F, "Benign positional vertigo", 3, "Oncology", 1767771799, 0
-Jean, Ncube, 771658, 6, 2, 1956, F, "Community acquired pneumonia", 2, "Medical Observation", 1767338747, 1767140333
-James, Phiri, 711580, 27, 12, 1987, F, "Bacterial conjunctivitis", 1, "Azithromycin 500mg once daily for 3 days", 1760938492, 0
-Tafara, Gonzalez, 490319, 24, 5, 1961, M, "Bronchial asthma", 1, "Metoclopramide 10mg three times daily", 1773464523, 0
-Omar, Williams, 962264, 8, 3, 2005, M, "Viral fever", 1, "Paracetamol 500mg twice daily for 5 days", 1773941609, 0
-Tariq, Robert, 570485, 21, 12, 2005, M, "Anaphylaxis", 2, "Medical Observation", 1770720839, 1770593960
-Noah, Garcia, 482784, 21, 11, 1963, F, "Otitis media", 1, "Diclofenac 50mg twice daily for 3 days", 1767030726, 0
-Jackson, Ncube, 814750, 19, 11, 1965, F, "Laceration requiring sutures", 1, "Amoxicillin 500mg three times daily for 7 days", 1759999610, 0
-Carmen, Ibrahim, 662824, 19, 8, 2002, M, "Viral fever", 1, "Omeprazole 20mg once daily before meals", 1771207964, 0
-Farai, Banda, 736806, 5, 2, 1961, F, "Bacterial conjunctivitis", 1, "Prednisolone 30mg once daily tapering over 5 days", 1765861220, 0
-Mia, Miller, 961568, 19, 1, 1963, F, "Febrile seizure", 1, "Ciprofloxacin 500mg twice daily for 5 days", 1760390804, 0
-Olivia, Rodriguez, 558483, 9, 9, 1984, M, "Lateral ankle sprain", 2, "Medical Observation", 1764968724, 1764826511
-Mason, Flores, 960085, 16, 7, 1980, M, "Hypertensive crisis", 1, "Amlodipine 5mg once daily", 1772872643, 0
-Rosa, Ibrahim, 732614, 9, 5, 1963, M, "Acute appendicitis", 1, "Paracetamol 500mg twice daily for 5 days", 1759623484, 0
-Mason, Dubois, 502717, 9, 3, 1972, M, "Tension headache", 1, "Hydrocortisone cream apply twice daily", 1773331430, 0
-Abigail, Banda, 988941, 7, 4, 1952, F, "Salmonella gastroenteritis", 3, "Rheumatology", 1766021818, 0
-Lucas, Makoni, 679886, 23, 1, 2000, M, "Deep vein thrombosis", 1, "Hydrocortisone cream apply twice daily", 1769017298, 0
-Tatenda, Hernandez, 731513, 20, 5, 1982, M, "Hypertensive crisis", 1, "Hydrocortisone cream apply twice daily", 1760802140, 0
-Munashe, Traore, 726615, 10, 4, 1961, M, "Upper respiratory infection", 1, "Metoclopramide 10mg three times daily", 1759807218, 0
-Miguel, Simon, 478725, 13, 4, 1959, F, "Migraine with aura", 1, "Cetirizine 10mg once daily at night", 1766340412, 0
-Omar, Bernard, 670931, 22, 11, 1956, F, "Benign positional vertigo", 1, "Cetirizine 10mg once daily at night", 1764014339, 0
-Louis, Thomas, 250144, 1, 3, 1976, M, "Contact dermatitis", 1, "Azithromycin 500mg once daily for 3 days", 1765366066, 0
-Olivia, Lopez, 278219, 17, 12, 1961, F, "Pulmonary embolism", 1, "Tramadol 50mg every 6 hours as needed", 1760312660, 0
-Elena, Banda, 669778, 12, 8, 1966, M, "Acute gastritis", 1, "Paracetamol 500mg twice daily for 5 days", 1770856459, 0
-Nyasha, Mwale, 600834, 11, 1, 1973, F, "Laceration requiring sutures", 1, "Azithromycin 500mg once daily for 3 days", 1764153246, 0
-Elena, Khalil, 992803, 4, 2, 1999, M, "Costochondritis", 1, "Omeprazole 20mg once daily before meals", 1762455630, 0
-Carlos, Mwale, 127155, 20, 8, 1967, F, "Renal colic", 3, "Gastroenterology", 1770423965, 0
-Isabella, Perez, 143203, 8, 10, 2001, M, "Tension headache", 1, "Prednisolone 30mg once daily tapering over 5 days", 1764717540, 0
-Rudo, Diallo, 824339, 5, 8, 1968, M, "Cellulitis", 1, "Hydrocortisone cream apply twice daily", 1769141130, 0
-Luis, Zulu, 710968, 13, 10, 2001, F, "Tension headache", 1, "Metformin 500mg twice daily with meals", 1758923370, 0
-Sophie, Zulu, 242923, 22, 10, 1999, F, "Radius fracture", 1, "Diclofenac 50mg twice daily for 3 days", 1758769996, 0
-Jean, Martin, 712303, 19, 9, 1957, F, "Tension headache", 1, "Tramadol 50mg every 6 hours as needed", 1758506309, 0
-Sophie, Petit, 908448, 25, 9, 1956, F, "Acute appendicitis", 1, "Prednisolone 30mg once daily tapering over 5 days", 1759324084, 0
-Ava, Garcia, 718973, 23, 6, 1953, M, "Costochondritis", 1, "Prednisolone 30mg once daily tapering over 5 days", 1761383665, 0
-Marie, Banda, 381033, 17, 2, 1978, M, "Hypertensive crisis", 2, "Medical Observation", 1770646851, 1770626822
-Oliver, Mensah, 539974, 16, 9, 1982, F, "Cystitis", 1, "Salbutamol inhaler 2 puffs as needed", 1767757877, 0
-Evelyn, Garcia, 614500, 5, 12, 1979, M, "Salmonella gastroenteritis", 1, "Prednisolone 30mg once daily tapering over 5 days", 1771227236, 0
-Yusuf, Wilson, 705611, 8, 3, 1954, M, "Otitis media", 2 ,"Medical Observation", 1774008400, 1773503083
-Jean, Martin, 650793, 28, 11, 1994, M, "cancer", 3 ,"radiology", 1774029745, 0
-Layla, Nkosi, 722193, 27, 9, 2005, M, "Community acquired pneumonia", 2 ,"Medical Observation", 1774029851, 1773912883
-Isabelle, Smith, 792449, 12, 9, 1951, M, "asthi", 2 ,"Medical Observation", 1774282121, 1774282066
-Isabelle, Smith, 792449, 12, 9, 1951, M, "homesick", 3 ,"sickbay", 1774611560, 0
-Liam, Hassan, 400922, 4, 2, 1975, F, "ghhh", 3 ,"nhgfg", 1775231753, 0
-Isabelle, Smith, 792449, 12, 9, 1951, M, "Heart disease", 2 ,"Medical Observation", 1775231767, 1775231729
-Isabella, Sanchez, 306271, 21, 10, 1966, F, "Laceration requiring sutures", 2 ,"Medical Observation", 1775232778, 1773862687
-Ethan, Rahman, 863471, 21, 7, 1996, M, "Tension headache", 2 ,"Medical Observation", 1775424214, 1773940854
-Aiden, Zulu, 298203, 24, 1, 1977, F, "Contact dermatitis", 2 ,"Medical Observation", 1775667562, 1773996479
-tinaye, sam, 123456, 22, 2, 2023, m, "refered to another department", 1 ,"sleeep", 1775673872, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "Shes just crazy man", 3 ,"Mental Hospital", 1775740983, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "Is really crazy", 3 ,"Mental Hospital", 1775741224, 0
-Amelia, Makoni, 874190, 15, 12, 2001, F, "nios", 3 ,"skdhf", 1775741306, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "jsfs", 3 ,"sdfsdf", 1775741427, 0
-Amelia, Makoni, 874190, 15, 12, 2001, F, "sdasdasdasd", 3 ,"dsdasdas", 1775741477, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "3232", 3 ,"sdsds", 1775741608, 0
-Amelia, Makoni, 874190, 15, 12, 2001, F, "dfsdf", 3 ,"sdfsdf", 1775741715, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "SDF", 1 ,"SDF", 1775742634, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "she is crazy", 3 ,"pschiatric", 1775742924, 0
-Chiedza, Wilson, 595750, 23, 4, 1999, F, "Cellulitis", 2 ,"Medical Observation", 1775769606, 1773585614
-Chiedza, Wilson, 595750, 23, 4, 1999, F, "Cellulitis", 4 ,"Medical Observation", 1775770030, 1773585614
-Elena, Hassan, 107314, 8, 4, 1978, M, "anxiety", 3 ,"ps", 1775774916, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "anxiety", 3 ,"ps", 1775774931, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "anxiety", 3 ,"ps", 1775775055, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "anxiety", 3 ,"ps", 1775775163, 0
-Elena, Hassan, 107314, 8, 4, 1978, M, "anxiety", 3 ,"ps", 1775775311, 0
-Amelia, Makoni, 874190, 15, 12, 2001, F, "Shes wacko", 2 ,"Medical Observation", 1775828846, 1775828768
+Rachid, Boudiaf, 507513901550515178, 23, 5, 1988, M, "Septic arthritis", 4 ,"Deceased under observation", 1645019280, 0
+James, Martin, 176233444972688882, 17, 4, 1997, M, "Renal colic", 1 ,"Metformin 850mg twice daily", 1659718320, 0
+Bilal, Hadjadj, 156265289685126618, 7, 3, 1994, M, "Chronic obstructive pulmonary", 3 ,"Cardiology", 1669280640, 0
+Riad, Ouali, 469971655804735849, 18, 9, 1990, M, "Septic arthritis", 1 ,"Ciprofloxacin 500mg x5 days", 1660460580, 0
+Asma, Brahimi, 518133958627166168, 5, 10, 1991, F, "Acute appendicitis", 1 ,"Salbutamol inhaler + Prednisolone", 1678801860, 0
+Imane, Oukaci, 287396521291380706, 2, 11, 1976, F, "Acute myocardial infarction", 1 ,"Amlodipine 5mg once daily", 1647675060, 0
+Hamza, Hadjadj, 549793361140446883, 8, 8, 1988, M, "Pulmonary tuberculosis", 2 ,"Medical Observation", 1671277500, 1670499900
+Bilal, Abbasi, 217498382431214508, 27, 10, 1976, M, "Migraine with aura", 3 ,"Neurology", 1705599120, 0
+Djamila, Benali, 476783850406603267, 14, 3, 1943, F, "Acute otitis media", 1 ,"Amlodipine 5mg once daily", 1648907160, 0
+William, Moore, 179793152432085816, 10, 4, 2018, M, "Septic arthritis", 1 ,"Metformin 850mg twice daily", 1676043300, 0
+Lotfi, Zidane, 506326715807066713, 8, 2, 2020, M, "Acute myocardial infarction", 4 ,"Deceased under observation", 1651747560, 0
+Amina, Abbasi, 468827757162575163, 7, 7, 1986, F, "Septic arthritis", 1 ,"Ibuprofen 400mg + Omeprazole", 1646069700, 0
+Bilal, Ferhat, 456681039986788810, 17, 8, 1970, M, "Atrial fibrillation", 1 ,"Furosemide 40mg + low-salt diet", 1713449640, 0
+Khaled, Berber, 537451681038591332, 2, 9, 2003, M, "Bacterial pneumonia", 1 ,"Furosemide 40mg + low-salt diet", 1652265960, 0
+Sofiane, Hadjadj, 319723792917680077, 3, 9, 1953, M, "Atrial fibrillation", 2 ,"Medical Observation", 1658908080, 1657871280
+Nathan, Taylor, 257929456106121121, 19, 2, 1972, M, "Lumbar disc herniation", 2 ,"Medical Observation", 1689957720, 1689698520
+Alice, Smith, 577556783496878794, 3, 5, 2011, F, "Bronchial asthma", 2 ,"Medical Observation", 1704561000, 1703783400
+Ryan, Brown, 506376691070282296, 20, 8, 1950, M, "Chronic obstructive pulmonary", 1 ,"Clarithromycin 500mg x7 days", 1668160380, 0
+Emma, Johnson, 399259843480227238, 27, 3, 1976, F, "Atrial fibrillation", 1 ,"Furosemide 40mg + low-salt diet", 1674630660, 0
+Samira, Ouali, 587828004393236708, 29, 6, 1986, F, "Migraine with aura", 1 ,"Tramadol 50mg + muscle relaxant", 1658067000, 0
+Rachid, Chouiref, 036147287353966829, 23, 2, 2019, M, "Pulmonary tuberculosis", 1 ,"Clarithromycin 500mg x7 days", 1643647200, 0
+Grace, Taylor, 207190210796930057, 3, 12, 1944, F, "Migraine with aura", 1 ,"Paracetamol 1g + rest", 1713535560, 0
+Sihem, Benali, 148096001343152920, 14, 2, 1948, F, "Lumbar disc herniation", 3 ,"Gastroenterology", 1656062280, 0
+Youcef, Berber, 309012088034371764, 16, 7, 1989, M, "Migraine with aura", 2 ,"Medical Observation", 1698596640, 1698164640
+Karim, Ouali, 387429700499296731, 4, 3, 1983, M, "Hypertensive crisis", 1 ,"Furosemide 40mg + low-salt diet", 1656057900, 0
+Hannah, Williams, 236495861716775313, 25, 3, 1992, F, "Migraine with aura", 1 ,"Clarithromycin 500mg x7 days", 1682499780, 0
+Fatima, Rahmani, 499968215047335723, 17, 10, 1982, F, "Pulmonary tuberculosis", 1 ,"Atorvastatin 20mg nightly", 1650558960, 0
+Ethan, Smith, 277184170192036212, 18, 2, 1947, M, "Atrial fibrillation", 1 ,"Salbutamol inhaler + Prednisolone", 1660219620, 0
+Rania, Benali, 197966353728192437, 5, 11, 1943, F, "Bacterial pneumonia", 4 ,"Deceased under observation", 1646143320, 0
+Emily, Moore, 488586752952517622, 12, 12, 2019, F, "Acute otitis media", 1 ,"Amoxicillin 500mg x7 days", 1672218840, 0
+Hamza, Belkacem, 546845325758693218, 8, 11, 1966, M, "Type 2 diabetes mellitus", 1 ,"Tramadol 50mg + muscle relaxant", 1665507900, 0
+Daniel, Wilson, 276162845262425442, 12, 6, 1967, M, "Acute appendicitis", 3 ,"Oncology", 1649060940, 0
+William, Wilson, 568438614682868807, 25, 2, 2008, M, "Lumbar disc herniation", 2 ,"Medical Observation", 1694447220, 1694015220
+Nathan, Taylor, 517836389569243530, 31, 8, 1957, M, "Type 2 diabetes mellitus", 1 ,"Tramadol 50mg + muscle relaxant", 1654932600, 0
+Mourad, Hadjadj, 349710322735957004, 3, 2, 1995, M, "Pulmonary embolism", 2 ,"Medical Observation", 1672160460, 1671037260
+William, Smith, 577943686135341188, 16, 6, 1966, M, "Renal colic", 4 ,"Deceased under observation", 1711870260, 0
+Nadia, Benmoussa, 418889471261122666, 25, 10, 1958, F, "Renal colic", 1 ,"Atorvastatin 20mg nightly", 1701258960, 0
+Hafida, Oukaci, 446159074854179368, 24, 9, 1950, F, "Urinary tract infection", 3 ,"Nephrology", 1673266680, 0
+Emma, Smith, 359094970624162290, 24, 5, 1977, F, "Viral gastroenteritis", 1 ,"Tramadol 50mg + muscle relaxant", 1699178340, 0
+Asma, Meziane, 397245775299307944, 26, 7, 1988, F, "Pulmonary tuberculosis", 1 ,"Paracetamol 1g + rest", 1649067900, 0
+Hannah, Johnson, 458042925603215806, 10, 7, 1993, F, "Pulmonary tuberculosis", 2 ,"Medical Observation", 1670605260, 1670000460
+Grace, Johnson, 567628138485214597, 8, 5, 1947, F, "Pulmonary embolism", 1 ,"Ciprofloxacin 500mg x5 days", 1645631280, 0
+Laura, Anderson, 106458516129034030, 17, 1, 1978, F, "Viral gastroenteritis", 1 ,"Amlodipine 5mg once daily", 1674061740, 0
+Laura, Anderson, 378149133168659787, 24, 4, 1983, F, "Acute appendicitis", 1 ,"Salbutamol inhaler + Prednisolone", 1681050240, 0
+Walid, Khelif, 348330077868072668, 4, 3, 2006, M, "Hypertensive crisis", 3 ,"Pulmonology", 1646999760, 0
+Daniel, Harris, 249392382137283303, 31, 7, 1958, M, "Chronic obstructive pulmonary", 3 ,"Pulmonology", 1699033560, 0
+Hannah, Brown, 268891585534754183, 25, 6, 1984, F, "Bronchial asthma", 2 ,"Medical Observation", 1687436400, 1686226800
+Lynda, Khelif, 327956638026826290, 3, 8, 1962, F, "Atrial fibrillation", 1 ,"Aspirin 100mg + Clopidogrel", 1685971980, 0
+Laura, Johnson, 356533073477734227, 17, 6, 1949, F, "Pulmonary embolism", 1 ,"Paracetamol 1g + rest", 1664896620, 0
+Sarah, Harris, 329797736519993319, 8, 5, 1947, F, "Atrial fibrillation", 1 ,"Clarithromycin 500mg x7 days", 1694797380, 0
+Riad, Rahmani, 149396998434476845, 7, 12, 1983, M, "Renal colic", 1 ,"Ciprofloxacin 500mg x5 days", 1705324980, 0
+Daniel, Anderson, 026158807598629501, 19, 1, 1958, M, "Hypertensive crisis", 1 ,"Metformin 850mg twice daily", 1664988840, 0
+Amine, Benali, 028685720651735077, 7, 4, 1973, M, "Pulmonary tuberculosis", 1 ,"Aspirin 100mg + Clopidogrel", 1682691000, 0
+Emily, Moore, 328779855534538156, 6, 1, 1957, F, "Septic arthritis", 1 ,"Tramadol 50mg + muscle relaxant", 1641639240, 0
+Sofiane, Berber, 186733366822764322, 8, 12, 1984, M, "Migraine with aura", 2 ,"Medical Observation", 1644772140, 1643908140
+Amina, Hadjadj, 576441869108607898, 20, 1, 2014, F, "Atrial fibrillation", 2 ,"Medical Observation", 1665481200, 1664703600
+Rachid, Cherchari, 357885260056091067, 11, 12, 1954, M, "Viral gastroenteritis", 2 ,"Medical Observation", 1698151080, 1697287080
+Sofiane, Khelif, 076349280711506822, 8, 9, 2002, M, "Pulmonary embolism", 1 ,"Amlodipine 5mg once daily", 1655388480, 0
+Leila, Meziane, 498754411126898931, 17, 8, 1991, F, "Atrial fibrillation", 1 ,"Ciprofloxacin 500mg x5 days", 1650287700, 0
+Alice, Martin, 308358833438899875, 15, 10, 1946, F, "Urinary tract infection", 3 ,"Cardiology", 1695549060, 0
+Sarah, Smith, 487081215560741699, 23, 7, 1987, F, "Type 2 diabetes mellitus", 1 ,"Aspirin 100mg + Clopidogrel", 1681313460, 0
+Oliver, Anderson, 177867304355204087, 27, 8, 2007, M, "Type 2 diabetes mellitus", 1 ,"Ibuprofen 400mg + Omeprazole", 1702642680, 0
+Hamza, Mansouri, 329895488554719221, 6, 6, 1960, M, "Migraine with aura", 1 ,"Clarithromycin 500mg x7 days", 1691672520, 0
+Chloe, Martin, 259039128209241392, 30, 3, 1953, F, "Migraine with aura", 1 ,"Amoxicillin 500mg x7 days", 1668163080, 0
+Amine, Benmoussa, 307796573524337511, 24, 5, 1957, M, "Type 2 diabetes mellitus", 1 ,"Salbutamol inhaler + Prednisolone", 1692264420, 0
+Chloe, Martin, 469352213827628338, 20, 1, 1969, F, "Renal colic", 1 ,"Furosemide 40mg + low-salt diet", 1679227800, 0
+Mourad, Abbasi, 487645456527005030, 20, 10, 1980, M, "Renal colic", 1 ,"Paracetamol 1g + rest", 1708962000, 0
+Yasmine, Benali, 078010290262432782, 18, 8, 1988, F, "Chronic obstructive pulmonary", 3 ,"Pulmonology", 1687771560, 0
+Samira, Mansouri, 318769715587790911, 25, 8, 1954, F, "Cerebral ischaemia", 1 ,"Clarithromycin 500mg x7 days", 1672218840, 0
+Alice, Brown, 037684357520542411, 16, 12, 2005, F, "Acute appendicitis", 1 ,"Tramadol 50mg + muscle relaxant", 1651247700, 0
+James, Harris, 169558221824175990, 1, 1, 1979, M, "Type 2 diabetes mellitus", 1 ,"Furosemide 40mg + low-salt diet", 1713538560, 0
+Nadia, Chouiref, 149040567609249008, 4, 11, 1985, F, "Urinary tract infection", 2 ,"Medical Observation", 1712836080, 1711885680
+Sofiane, Cherchari, 509672544633083662, 5, 4, 1963, M, "Viral gastroenteritis", 3 ,"Neurology", 1693327200, 0
+Yasmine, Zidane, 409432529567447089, 12, 3, 1942, F, "Acute appendicitis", 1 ,"Ciprofloxacin 500mg x5 days", 1689155640, 0
+Emma, Martin, 148291236452682763, 13, 3, 1994, F, "Renal colic", 1 ,"Atorvastatin 20mg nightly", 1650206520, 0
+Emily, Brown, 296682777485380571, 17, 11, 1947, F, "Renal colic", 2 ,"Medical Observation", 1672915800, 1672483800
+Rachid, Boudiaf, 226270685776220756, 20, 12, 1945, M, "Bronchial asthma", 1 ,"Furosemide 40mg + low-salt diet", 1667924640, 0
+Asma, Abbasi, 099283341978553357, 8, 7, 1961, F, "Pulmonary tuberculosis", 4 ,"Deceased under observation", 1664621580, 0
+Grace, Williams, 429114200001087425, 16, 7, 1992, F, "Lumbar disc herniation", 1 ,"Tramadol 50mg + muscle relaxant", 1650808380, 0
+Youcef, Benmoussa, 546290567245801869, 24, 3, 1983, M, "Bronchial asthma", 1 ,"Paracetamol 1g + rest", 1669291740, 0
+Yasmine, Khelif, 437664864668885369, 24, 8, 2010, F, "Atrial fibrillation", 1 ,"Paracetamol 1g + rest", 1680882540, 0
+Adel, Zidane, 158660021845548354, 20, 8, 1982, M, "Urinary tract infection", 2 ,"Medical Observation", 1647085020, 1646480220
+Rania, Benali, 069267624256474227, 25, 2, 2002, F, "Pulmonary tuberculosis", 3 ,"Gastroenterology", 1641140160, 0
+Hamza, Ouali, 447247019575763225, 22, 5, 2016, M, "Pulmonary embolism", 1 ,"Atorvastatin 20mg nightly", 1694164380, 0
+James, Brown, 368953835800330078, 31, 7, 1975, M, "Iron deficiency anaemia", 2 ,"Medical Observation", 1701170100, 1700478900
+Naima, Zidane, 469860473302390780, 16, 6, 1977, F, "Septic arthritis", 3 ,"Nephrology", 1645109400, 0
+Thomas, Taylor, 169665974200010853, 11, 10, 1974, M, "Acute otitis media", 1 ,"Tramadol 50mg + muscle relaxant", 1659357720, 0
+Thomas, Martin, 556762882357634013, 12, 11, 1954, M, "Viral gastroenteritis", 1 ,"Aspirin 100mg + Clopidogrel", 1697648820, 0
+Grace, Johnson, 406240065898627252, 27, 8, 2020, F, "Bronchial asthma", 1 ,"Paracetamol 1g + rest", 1652359680, 0
+Rania, Meziane, 529549674756546386, 3, 6, 1993, F, "Urinary tract infection", 1 ,"Salbutamol inhaler + Prednisolone", 1691397420, 0
+James, Martin, 509383161151970736, 7, 4, 2021, M, "Hypertensive crisis", 1 ,"Aspirin 100mg + Clopidogrel", 1684681980, 0
+Asma, Benali, 097494601529150484, 10, 5, 2016, F, "Bronchial asthma", 3 ,"Nephrology", 1689071880, 0
+Meriem, Cherchari, 517036935141691872, 11, 8, 1990, F, "Bacterial pneumonia", 1 ,"Clarithromycin 500mg x7 days", 1700649660, 0
+William, Williams, 256291072212198350, 18, 5, 1948, M, "Chronic obstructive pulmonary", 2 ,"Medical Observation", 1641318480, 1641059280
+Houria, Chouiref, 229577079348392892, 4, 7, 1992, F, "Septic arthritis", 1 ,"Paracetamol 1g + rest", 1680599700, 0
+Farid, Benmoussa, 176054497640074494, 21, 2, 2021, M, "Viral gastroenteritis", 1 ,"Metformin 850mg twice daily", 1713867840, 0
+Sophie, Wilson, 276220773527381519, 22, 11, 1979, F, "Pulmonary embolism", 1 ,"Amoxicillin 500mg x7 days", 1655017560, 0
+Ryan, Smith, 127198319642822179, 3, 12, 1957, M, "Bacterial pneumonia", 1 ,"Amoxicillin 500mg x7 days", 1681199040, 0
+Daniel, Wilson, 577480638680301478, 28, 3, 1956, M, "Urinary tract infection", 1 ,"Amlodipine 5mg once daily", 1643527860, 0
+Farid, Khelif, 057141463985642324, 19, 9, 1975, M, "Bronchial asthma", 2 ,"Medical Observation", 1690204440, 1688994840

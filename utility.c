@@ -31,7 +31,7 @@ int validatePatient(Patient pat){
     if(pat.dob.year< 1900 || pat.dob.year > 2026){
         return 1;
     }
-    if(pat.id< 100000 || pat.id > 999999){
+    if(pat.id < 100000000000000000LL || pat.id > 999999999999999999LL){
         return 2;
     }
     if(pat.gender != 'M'  && pat.gender != 'm' && pat.gender != 'F'  && pat.gender != 'f'){
@@ -59,30 +59,30 @@ void printmenu(Ward ward, Node* start, Patient currentPatientInRoom){
     int x = queuelength(start);
     int y = bedsoccupied(ward);
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
-    printf("     |                  HOSPITAL MANAGEMENT SYSTEM V1.0                        |\n" );
+    printf("     |                    HOSPITAL MANAGEMENT SYSTEM V1.0                      |\n" );
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
-    printf("     |                    QUEUE: "CYAN"%-3d "RESET "Patients Beds: "CYAN"%-2d/%-2d "RESET"                     |\n", x, y, maxbeds);
+    printf("     |                 QUEUE: "CYAN"%-3d    "RESET"       Patients Beds: "CYAN"%-2d/%-2d "RESET"              |\n", x, y, maxbeds);
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     if (currentPatientInRoom.ticketnum == 0){
-        printf("     |                  Doctor Is Not Seeing Anyone at the moment              |\n");
+        printf("     |                       Consultation Room:"RED" VACANT                "RESET"         |\n");
     }else{
-        printf("     |    Doctor Is Now Seeing: "CYAN"%-10s %-10s    "RESET"ticketNumber:"CYAN" %-4d    "RESET"| \n" RESET,
+        printf("     |    Now in Consultation: "CYAN"%-10s %-10s    "RESET"ticketNumber:"CYAN" %-4d     "RESET"| \n" RESET,
                currentPatientInRoom.firstname,
                currentPatientInRoom.lastname,
                currentPatientInRoom.ticketnum );
     }
     printf("     "CYAN "+-------------------------------------------------------------------------+\n" RESET);
     printf("\n");
-    printf("     "CYAN" [1]"RESET" View Patient Queue.\n");
-    printf("     "CYAN" [2]"RESET" Add Patient to Queue.\n");
-    printf("     "CYAN" [3]"RESET" Edit Patient in Queue.\n");
+    printf("     "CYAN" [1]"RESET" View Waiting Queue.\n");
+    printf("     "CYAN" [2]"RESET" Register New Patient and add to Queue.\n");
+    printf("     "CYAN" [3]"RESET" Edit Patient Details in Queue.\n");
     printf("     "CYAN" [4]"RESET" Remove Patient from Queue.\n");
-    printf("     "CYAN" [5]"RESET" Call the Next Patient to see the Doctor.\n");
+    printf("     "CYAN" [5]"RESET" Call the Next Patient to Consultation Room\n");
     printf("     "CYAN" [6]"RESET" View Observation Ward.\n");
     printf("     "CYAN" [7]"RESET" Discharge Patient from Observation Ward.\n");
-    printf("     "CYAN" [8]"RESET" Search History or View All Patient History Records.\n");
+    printf("     "CYAN" [8]"RESET" View / Search Patient History Records.\n");
     printf("     "CYAN" [9]"RESET" View Hospital Statistics.\n");
-    printf("     "CYAN" [0]"RESET" Save and Exit.\n");
+    printf("     "CYAN" [0]"RESET" Save & Exit System.\n");
 }
 
 /**This procedure frees the queue

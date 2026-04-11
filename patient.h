@@ -10,7 +10,7 @@ typedef struct{
 }date;
 
 typedef struct{
-    int id;
+    long long id;
     int ticketnum;
     char firstname[100];
     char lastname[100];
@@ -39,9 +39,10 @@ Node* enqueuePatient(Node *start, Patient pat);
 Node* loadqueue();
 Node* dequeuePatient(Node *start, int ticketnumber);
 void savequeue(Node *start);
-void editqueue(Node *start, int id);
+void editqueue(Node *start, int ticketnumber);
 int queuelength(Node *start);
 Patient registerpatient(Node *start);
+
 
 
 

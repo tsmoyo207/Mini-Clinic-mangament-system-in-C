@@ -4,7 +4,7 @@
 #include "observations.h"
 
 void appendConsultationRecord(ConsulatationRecord record);
-void viewhistory(int num);
+void viewhistory(long long searchID);
 void statistics(Node *start, Ward ward);
 char* duration(double seconds);
 
