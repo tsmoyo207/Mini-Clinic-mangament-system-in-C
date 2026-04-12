@@ -63,7 +63,7 @@ void viewqueue(Node *temp){
             }
             temp= temp->next;
         }
-        printf(GRN_BR_BOLD "========================= END OF QUEUE — %d patient(s) waiting =========================\n" RESET, count);
+        printf(GRN_BR_BOLD "=================================== END OF QUEUE - %d patient(s) waiting ==================================\n" RESET, count);
     }
 
 }

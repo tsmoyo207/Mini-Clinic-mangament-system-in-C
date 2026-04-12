@@ -63,7 +63,7 @@ void viewhistory(long long searchID){
 
         if (!f) {
         // Validate if its a file or not to minimize errors.
-        printf(RED"Error opening file\n"RESET);
+        printf(RED"Error opening patient history file\n"RESET);
     }else{
          if (searchID==0){
                while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
@@ -127,7 +127,7 @@ void viewhistory(long long searchID){
             }
 
              if(notPrintedYet){
-                printf(RED"No patient history records exist yet.\n"RESET);
+                printf(RED"No patient history records exist yet\n"RESET);
             }
         }else{
             while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
