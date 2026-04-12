@@ -272,11 +272,11 @@ Patient registerpatient(Node *start){
             printf("A previous record was found for ID %lld under the name "CYAN" %s %s.\n"RESET, cachedRecord.id, cachedRecord.firstname, cachedRecord.lastname);
             printf("Is this a follow-up of the previous visit for "CYAN"%s %s? "RESET"(Y/n): ", cachedRecord.firstname, cachedRecord.lastname);
             scanf(" %c", &option1);
-        //Autofill user information for all deatials and set priority to 1.
+        //Autofill user information for all details and set priority to 1.
             if (option1 == 'Y' || option1 == 'y'){
                     newPatient = cachedRecord;
                     newPatient.priority = 1;
-                    printf(GRN "Patient and Consulation information auto-filled from previous record.\n" RESET);
+                    printf(GRN "Patient and Consultation information auto-filled from previous record.\n" RESET);
             }else{
                 printf("Would you like to auto-fill personal details from their previous record? (Y/n)?:  ");
                 scanf(" %c", &option2);
