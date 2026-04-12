@@ -143,7 +143,6 @@ Node* enqueuePatient(Node *start, Patient pat){
             current = current->next;
         }
         }
-
         //Looks for the largest TicketNum in the queue and increaments it before assigning to new patient record
         maxTicketNum = size->data.ticketnum;
         while(size != NULL){
@@ -245,8 +244,6 @@ Patient registerpatient(Node *start){
                     printf(RED"Error " RESET "This patient (ID: %lld) is already waiting in the queue: \n", newPatient.id);
                 }
             }while(inqueue == true);
-
-
             //Checks for patient ID in history records
             FILE* f = fopen("patienthistory.csv", "r");
             if (!f) {
@@ -275,11 +272,7 @@ Patient registerpatient(Node *start){
             printf("A previous record was found for ID %lld under the name "CYAN" %s %s.\n"RESET, cachedRecord.id, cachedRecord.firstname, cachedRecord.lastname);
             printf("Is this a follow-up of the previous visit for "CYAN"%s %s? "RESET"(Y/n): ", cachedRecord.firstname, cachedRecord.lastname);
             scanf(" %c", &option1);
-            //Autofill user information for all deatials and set priority to 1.
-
-
-            //Autofill user information for all deatials and set priority to 1.
-
+        //Autofill user information for all deatials and set priority to 1.
             if (option1 == 'Y' || option1 == 'y'){
                     newPatient = cachedRecord;
                     newPatient.priority = 1;

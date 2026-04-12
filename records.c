@@ -121,9 +121,10 @@ void viewhistory(long long searchID){
                     }
 
                 }
+                notPrintedYet = false;
+
 
             }
-             notPrintedYet = false;
 
              if(notPrintedYet){
                 printf(RED"No patient history records exist yet.\n"RESET);
