@@ -275,12 +275,11 @@ Patient registerpatient(Node *start){
             printf("A previous record was found for ID %lld under the name "CYAN" %s %s.\n"RESET, cachedRecord.id, cachedRecord.firstname, cachedRecord.lastname);
             printf("Is this a follow-up of the previous visit for "CYAN"%s %s? "RESET"(Y/n): ", cachedRecord.firstname, cachedRecord.lastname);
             scanf(" %c", &option1);
-<<<<<<< HEAD
             //Autofill user information for all deatials and set priority to 1.
-=======
 
-        //Autofill user information for all deatials and set priority to 1.
->>>>>>> 24f84ac5c43674f30544618d85b2bb818f55fbed
+
+            //Autofill user information for all deatials and set priority to 1.
+
             if (option1 == 'Y' || option1 == 'y'){
                     newPatient = cachedRecord;
                     newPatient.priority = 1;
@@ -402,7 +401,6 @@ Node* dequeuePatient(Node *start, int ticketnumber){
 /**This Function allows the re-entering of patient details in case of incoreently entered details
 */
 void editqueue(Node *start, int ticketnum){
-    Patient newPatient;
     if(start == NULL){
         printf(RED"the queue is empty\n"RESET);
     }else{
