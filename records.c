@@ -189,8 +189,6 @@ void viewhistory(long long searchID){
                         // Validate if the Id is in the record or not
                         printf(RED"No history records found for ID %lld.\n"RESET, searchID);
                     }
-                    free(releaseDate);
-                    free(admissionDate);
             }
     }
 }
