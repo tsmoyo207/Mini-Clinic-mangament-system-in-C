@@ -57,16 +57,14 @@ void viewhistory(long long searchID){
     char firstname[100], lastname[100], diagnosis[100], treatment[100];
     int outcome;
     time_t releasedate, admissiondate;
-    char *releaseDate, *admissionDate;
+    char *releaseDate, *admissionDate, *temp;
 
-
-
-        if (!f) {
+    if (!f) {
         // Validate if its a file or not to minimize errors.
         printf(RED"Error opening patient history file\n"RESET);
     }else{
          if (searchID==0){
-               while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+               while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %lld, %lld",
                       firstname,
                       lastname,
                       &id,
@@ -82,22 +80,23 @@ void viewhistory(long long searchID){
         if(notPrintedYet){
             printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
         }
-        releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings.
-        releaseDate[24] = '\0';// Removes default new line added by ctime.
+
+        char *releaseDate = strdup(ctime(&releasedate));//Convert numeric timestamps into human readable strings.
+        releaseDate[24] = '\0';  // Removes default new line added by ctime.
 
         if(outcome == 2){
-            admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings.
-            admissionDate[24] = '\0';// Removes default new line added by ctime.
-
+            char *admissionDate = strdup(ctime(&admissiondate));//Convert numeric timestamps into human readable strings.
+            admissionDate[24] = '\0'; // Removes default new line added by ctime.
             double observationDuration = difftime(releasedate, admissiondate);//Calculates the length between 2 timestamps
             char *observed = duration(observationDuration);//Converts difftime into human readable string
-
             printf("--------------------------------------------------------------------------------------------------------------------\n");
             printf(MGT"     Full Name: "RESET"%-12s %-12s                "MGT"ID:"RESET" %-18lld                "MGT"DOB: "RESET"%d/%d/%d\n", firstname, lastname, id, day, month, year);
             printf(MGT"     Diagnosis:"RESET" %s\n", diagnosis );
             printf(MGT"     Outcome:"RESET" Placed Under Observation for %s\n", observed );
             printf(MGT"     Date of Admission:"RESET" %s "MGT"        Date of Release: "RESET"%s\n", admissionDate, releaseDate );
-            }else{
+            free(observed);
+            free(admissionDate);
+             }else{
                 if(outcome == 1){
                     printf("--------------------------------------------------------------------------------------------------------------------\n");
                     printf(MGT"     Full Name: "RESET"%-12s %-12s            "MGT"  ID:"RESET" %-18lld             "MGT"  DOB:"RESET" %d/%d/%d\n", firstname, lastname, id, day, month, year);
@@ -119,18 +118,15 @@ void viewhistory(long long searchID){
                             printf(MGT"     Date of Death:"RESET" %s\n", releaseDate);
                         }
                     }
-
                 }
+                free(releaseDate);
                 notPrintedYet = false;
-
-
             }
-
              if(notPrintedYet){
                 printf(RED"No patient history records exist yet\n"RESET);
             }
         }else{
-            while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+            while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %lld, %lld",
                       firstname,
                       lastname,
                       &id,
@@ -143,19 +139,15 @@ void viewhistory(long long searchID){
                       treatment,
                       &releasedate,
                       &admissiondate)) == 12){
-
                     if(id == searchID){
-                          if(!found){
-                                printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
-                          }
-
-                        releaseDate = ctime(&releasedate);//Convert numeric timestamps int human readable strings
-                        releaseDate[24] = '\0';// Removes default new line added by ctime.
-
-
+                        if(!found){
+                            printf(GRN_BR_BOLD"-------------------------------------------PATIENT HISTORY RECORDS--------------------------------------------------\n"RESET);
+                        }
+                        char *releaseDate = strdup(ctime(&releasedate));//Convert numeric timestamps into human readable strings.
+                        releaseDate[24] = '\0';  // Removes default new line added by ctime
                         if(outcome == 2){
-                            char *admissionDate = ctime(&admissiondate);//Convert numeric timestamps int human readable strings
-                            admissionDate[24] = '\0';// Removes default new line added by ctime.
+                           char *admissionDate = strdup(ctime(&admissiondate));//Convert numeric timestamps into human readable strings.
+                            admissionDate[24] = '\0'; // Removes default new line added by ctime.
                             double observationDuration = difftime(releasedate, admissiondate);//Calculates the length between 2 timestamps
                             char *observed = duration(observationDuration);//Converts difftime into human readable string
 
@@ -165,6 +157,7 @@ void viewhistory(long long searchID){
                             printf(MGT"     Outcome:"RESET" Placed Under Observation for %s\n", observed );
                             printf(MGT"     Date of Admission:"RESET" %s "MGT"        Date of Release: "RESET"%s\n", admissionDate, releaseDate );
                             free(observed);
+                            free(admissionDate);
 
                             }else{
                                 if(outcome == 1){
@@ -183,7 +176,7 @@ void viewhistory(long long searchID){
                             }
                             found = true;
                         }
-
+                        free(releaseDate);
                     }
                     if (!found){
                         // Validate if the Id is in the record or not
@@ -191,6 +184,7 @@ void viewhistory(long long searchID){
                     }
             }
     }
+    fclose(f);
 }
 
 /**
@@ -222,7 +216,7 @@ void statistics(Node *start, Ward ward){
         //Validates if its a file or not.
         printf(RED"Error opening file\n"RESET);
     }else{
-        while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %ld, %ld",
+        while((fscanf(f, " %99[^,] , %99[^,] , %lld , %d , %d , %d , %c , \"%99[^\"]\" , %d , \"%99[^\"]\" , %lld, %lld",
                 firstname,
                 lastname,
                 &id,

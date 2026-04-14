@@ -1,6 +1,7 @@
 Rachid, Boudiaf, 507513901550515178, 23, 5, 1988, M, "Septic arthritis", 4 ,"Deceased under observation", 1645019280, 0
 James, Martin, 176233444972688882, 17, 4, 1997, M, "Renal colic", 1 ,"Metformin 850mg twice daily", 1659718320, 0
 Bilal, Hadjadj, 156265289685126618, 7, 3, 1994, M, "Chronic obstructive pulmonary", 3 ,"Cardiology", 1669280640, 0
+Youcef, Berber, 309012088034371764, 16, 7, 1989, M, "Migraine with aura", 2 ,"Medical Observation", 1698596640, 1698164640
 Riad, Ouali, 469971655804735849, 18, 9, 1990, M, "Septic arthritis", 1 ,"Ciprofloxacin 500mg x5 days", 1660460580, 0
 Asma, Brahimi, 518133958627166168, 5, 10, 1991, F, "Acute appendicitis", 1 ,"Salbutamol inhaler + Prednisolone", 1678801860, 0
 Imane, Oukaci, 287396521291380706, 2, 11, 1976, F, "Acute myocardial infarction", 1 ,"Amlodipine 5mg once daily", 1647675060, 0
@@ -21,7 +22,6 @@ Samira, Ouali, 587828004393236708, 29, 6, 1986, F, "Migraine with aura", 1 ,"Tra
 Rachid, Chouiref, 036147287353966829, 23, 2, 2019, M, "Pulmonary tuberculosis", 1 ,"Clarithromycin 500mg x7 days", 1643647200, 0
 Grace, Taylor, 207190210796930057, 3, 12, 1944, F, "Migraine with aura", 1 ,"Paracetamol 1g + rest", 1713535560, 0
 Sihem, Benali, 148096001343152920, 14, 2, 1948, F, "Lumbar disc herniation", 3 ,"Gastroenterology", 1656062280, 0
-Youcef, Berber, 309012088034371764, 16, 7, 1989, M, "Migraine with aura", 2 ,"Medical Observation", 1698596640, 1698164640
 Karim, Ouali, 387429700499296731, 4, 3, 1983, M, "Hypertensive crisis", 1 ,"Furosemide 40mg + low-salt diet", 1656057900, 0
 Hannah, Williams, 236495861716775313, 25, 3, 1992, F, "Migraine with aura", 1 ,"Clarithromycin 500mg x7 days", 1682499780, 0
 Fatima, Rahmani, 499968215047335723, 17, 10, 1982, F, "Pulmonary tuberculosis", 1 ,"Atorvastatin 20mg nightly", 1650558960, 0
@@ -79,7 +79,7 @@ Asma, Abbasi, 099283341978553357, 8, 7, 1961, F, "Pulmonary tuberculosis", 4 ,"D
 Grace, Williams, 429114200001087425, 16, 7, 1992, F, "Lumbar disc herniation", 1 ,"Tramadol 50mg + muscle relaxant", 1650808380, 0
 Youcef, Benmoussa, 546290567245801869, 24, 3, 1983, M, "Bronchial asthma", 1 ,"Paracetamol 1g + rest", 1669291740, 0
 Yasmine, Khelif, 437664864668885369, 24, 8, 2010, F, "Atrial fibrillation", 1 ,"Paracetamol 1g + rest", 1680882540, 0
-Adel, Zidane, 158660021845548354, 20, 8, 1982, M, "Urinary tract infection", 2 ,"Medical Observation", 1647085020, 1646480220 
+Adel, Zidane, 158660021845548354, 20, 8, 1982, M, "Urinary tract infection", 2 ,"Medical Observation", 1647085020, 1646480220
 Rania, Benali, 069267624256474227, 25, 2, 2002, F, "Pulmonary tuberculosis", 3 ,"Gastroenterology", 1641140160, 0
 Hamza, Ouali, 447247019575763225, 22, 5, 2016, M, "Pulmonary embolism", 1 ,"Atorvastatin 20mg nightly", 1694164380, 0
 James, Brown, 368953835800330078, 31, 7, 1975, M, "Iron deficiency anaemia", 2 ,"Medical Observation", 1701170100, 1700478900
@@ -98,4 +98,3 @@ Sophie, Wilson, 276220773527381519, 22, 11, 1979, F, "Pulmonary embolism", 1 ,"A
 Ryan, Smith, 127198319642822179, 3, 12, 1957, M, "Bacterial pneumonia", 1 ,"Amoxicillin 500mg x7 days", 1681199040, 0
 Daniel, Wilson, 577480638680301478, 28, 3, 1956, M, "Urinary tract infection", 1 ,"Amlodipine 5mg once daily", 1643527860, 0
 Farid, Khelif, 057141463985642324, 19, 9, 1975, M, "Bronchial asthma", 2 ,"Medical Observation", 1690204440, 1688994840
-Nabil, Meziane, 507574714680974376, 28, 6, 1951, M, "Hypertensive crisis", 2 ,"Medical Observation", 1776012680, 1775487600
