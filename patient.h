@@ -1,6 +1,7 @@
 #ifndef PATIENT_H_INCLUDED
 #define PATIENT_H_INCLUDED
 #include <time.h>
+#include <stdbool.h>
 
 
 typedef struct{
