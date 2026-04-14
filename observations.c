@@ -170,24 +170,18 @@ int bedsoccupied(Ward ward){
 * Supports a special logic.If the bednumber is negative, the patient is marked as 'Deceased'.
 */
 
-Ward dischargepatient(Ward ward, int bednumber){
-     bool died = false;
-
-     while(bednumber == 0 || bednumber < -maxbeds || bednumber > maxbeds){
-            printf(RED"Invalid Bed Number, Please try again: "RESET);
+Ward dischargepatient(Ward ward, int bednumber, bool died){
+     while(bednumber < 1 || bednumber > maxbeds){
+            printf(RED"Invalid Bed Number, Please try again:\n"RESET);
+            printf("Enter a Valid Bed Number to Discharge Patient ( 1 to %d): ", maxbeds);
             // This loop validates for the user to enter a number not a string or character
             while((scanf("%d", &bednumber))!= 1){
                 printf(RED"Invalid input!" RESET " Please Enter a number: ");
                 while(getchar() != '\n');
                 }
     }
-    if(bednumber<1){
-        died = true;
-        bednumber = bednumber * -1;
-    }
-
     if(ward.beds[bednumber-1].occupied == 0){
-        printf(RED"Bed %d is already vacant. No action taken.\n"RESET);
+        printf(RED"Bed %d is already vacant. No action taken.\n"RESET, bednumber);
     }else{
         ward.beds[bednumber-1].occupied = 0;
         printf(GRN"Bed %d: %s %s has been successfully discharged\n"RESET,
@@ -198,16 +192,16 @@ Ward dischargepatient(Ward ward, int bednumber){
                 ConsulatationRecord dischargePatient;
                 dischargePatient.data = ward.beds[bednumber-1].info;
                 dischargePatient.admissiondate = ward.beds[bednumber-1].date;
-
                 strcpy(dischargePatient.diagnosis , ward.beds[bednumber-1].diagnosis);
-                strcpy(dischargePatient.treatment , "Medical Observation");
                 if(died){
+                    strcpy(dischargePatient.treatment , "Died Under Medical Observation");
                     dischargePatient.outcome = 4;
                 }else{
+                    strcpy(dischargePatient.treatment , "Medical Observation");
                     dischargePatient.outcome = 2;
                 }
                 appendConsultationRecord(dischargePatient);
-            }
-            pause();
-            return ward;
+    }
+    pause();
+    return ward;
 }

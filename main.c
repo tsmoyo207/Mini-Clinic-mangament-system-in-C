@@ -16,7 +16,7 @@ int main(){
     int bednumber, menuchoice,ticketnumber, ticket;
     Ward ward = loadobservations();
     char opt;
-    bool loop = true;
+    bool loop = true, died = false;
 
     do{
         printmenu(ward, start, currentPatientInRoom);
@@ -173,12 +173,12 @@ int main(){
                     printf(RED"Invalid input!" RESET " Please Enter a number: ");
                     while(getchar() != '\n');
                 }
-                printf("Did the patient pass away? (Y/n)");
+                printf("Did the patient pass away? (Y/n): ");
                 scanf(" %c", &opt);
                 if (opt == 'Y' || opt == 'y'){
-                    bednumber = bednumber * -1;
+                    died =true;
                 }
-                ward = dischargepatient(ward, bednumber);
+                ward = dischargepatient(ward, bednumber, died);
                 break;
         case 8:
                 int num;

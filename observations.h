@@ -19,7 +19,7 @@ typedef struct{
 Ward loadobservations();
 void viewobservations(Ward ward);
 Ward admitToBed(Node *tempo, Ward ward, char diagnosis[200]);
-Ward dischargepatient(Ward ward, int bednumber);
+Ward dischargepatient(Ward ward, int bednumber, bool died);
 void saveobservations(Ward ward);
 int bedsoccupied(Ward ward);
 
